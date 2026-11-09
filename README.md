@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/kaikzaza7/AgenFlux/main/public/agenflux-logo.png" alt="Logo AgenFlux" width="128"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/kaikzaza7/AgenFlux/main/public/agenflux-logo.png" alt="Logo AgenFlux" width="128" height="128"></p>
 
 # AgenFlux
 
@@ -7,7 +7,7 @@ Painel local para montar times de agentes, acompanhar missões do Codex e visual
 ## Interface
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/kaikzaza7/AgenFlux/main/public/agenflux-logo-mark.png" alt="Símbolo do AgenFlux" width="180">
+  <img src="https://raw.githubusercontent.com/kaikzaza7/AgenFlux/main/public/agenflux-logo-mark.png" alt="Símbolo do AgenFlux" width="180" height="180">
 </p>
 
 O projeto combina um painel operacional, um escritório visual de agentes e uma biblioteca ECC para organizar o fluxo de trabalho em um único lugar.
