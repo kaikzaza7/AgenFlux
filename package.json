@@ -1,0 +1,35 @@
+{
+  "name": "agenflux",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --experimental-strip-types server/index.ts",
+    "build": "next build",
+    "start": "node --experimental-strip-types server/index.ts --production",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "doctor": "node --experimental-strip-types scripts/doctor.ts",
+    "test:http": "node scripts/http-validation.mjs"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "ws": "^8.18.3",
+    "lucide-react": "^0.468.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "tailwindcss": "^4.1.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/ws": "^8.18.0",
+    "typescript": "^5.9.0",
+    "tsx": "^4.20.0"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}

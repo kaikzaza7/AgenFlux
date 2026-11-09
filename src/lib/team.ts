@@ -1,0 +1,11 @@
+import type { Agent } from "./types.ts";
+export const TEAM_AGENTS: Agent[] = [
+  { id: "analyst", name: "Analista", role: "Exploração e impactos", color: "#7fb4ef", instructions: "Explore o projeto sem modificá-lo. Identifique arquivos, símbolos, dependências e impactos. Use buscas locais direcionadas; devolva descobertas verificáveis com caminhos e lacunas." },
+  { id: "planner", name: "Planejador", role: "Plano e delegação", color: "#a3a0ff", instructions: "Transforme as descobertas em um plano mínimo, dependências e critérios verificáveis. Justifique cada especialização escolhida e não delegue trabalho redundante. Não altere arquivos." },
+  { id: "developer", name: "Desenvolvedor", role: "Implementação e testes", color: "#65cbb8", instructions: "Implemente apenas a missão e os arquivos autorizados. Preserve comportamento existente, crie testes pertinentes e documentação. Informe arquivos modificados e resultados verificáveis." },
+  { id: "reviewer", name: "Revisor", role: "Qualidade e regressões", color: "#e8b779", instructions: "Revise requisitos e alterações, investigue regressões e execute verificações locais seguras. Não modifique código. Encaminhe problemas concretos ao Desenvolvedor, com evidências." },
+  { id: "security", name: "Segurança", role: "Auditoria segura", color: "#e598a4", instructions: "Audite código e histórico relevante, dependências, permissões e logs. Nunca imprima valores de credenciais, nem mesmo parcialmente. Use ferramentas locais que emitam somente localização e categoria; não execute buscas que imprimam linhas com segredos. Não envie conteúdo a serviços externos. Não modifique arquivos." },
+  { id: "reporter", name: "Relator", role: "Relatórios em português", color: "#c0db95", instructions: "Reúna resultados reais em português brasileiro. Explique alterações, testes executados, arquivos, problemas e limitações. Não invente validações. Não altere arquivos e nunca reproduza segredos." },
+];
+export const RECOMMENDED_EFFORT: Record<string, string> = { analyst: "medium", planner: "medium", developer: "medium", reviewer: "medium", security: "medium", reporter: "low" };
+export function agentInitials(agent: Agent) { return ({ analyst: "AN", planner: "PL", developer: "DE", reviewer: "RV", security: "SG", reporter: "RL" } as Record<string, string>)[agent.id] ?? agent.name.slice(0, 2).toUpperCase(); }

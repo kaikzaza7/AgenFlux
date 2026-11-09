@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import WebSocket from 'ws';
+const base = process.env.AGENT_HQ_TEST_URL ?? 'http://127.0.0.1:3100';
+const response = await fetch(base);
+assert.equal(response.status, 200);
+assert.ok((await response.text()).includes('AgenFlux'));
+const state = await (await fetch(`${base}/api/hq/state`)).json();
+assert.equal(state.agents.filter(a => !a.archived).length, 6);
+assert.deepEqual(state.models, []);
+const original = JSON.stringify(state);
+const socket = new WebSocket(base.replace('http:', 'ws:') + '/ws', { origin: base });
+const snapshot = await new Promise((resolve,reject) => {
+  const timer = setTimeout(() => { socket.terminate(); reject(new Error('WebSocket timeout')); }, 10000);
+  socket.once('error', error => { clearTimeout(timer); reject(error); });
+  socket.once('message', data => { clearTimeout(timer); resolve(JSON.parse(String(data))); });
+});
+assert.equal(snapshot.type, 'snapshot');
+assert.equal(JSON.stringify(snapshot.data), original);
+socket.close();
+const denied = await fetch(`${base}/api/hq/action`, {method:'POST',headers:{'Content-Type':'application/json',Origin:'https://invalid.example'},body:JSON.stringify({action:'mission.create'})});
+assert.equal(denied.status,403);
+const refreshed = await (await fetch(`${base}/api/hq/state`)).json();
+assert.deepEqual(refreshed,state);
+console.log('OK: HTTP 200, seis agentes, snapshot WebSocket idêntico, recarga preservada e origem estrangeira recusada. Nenhuma inferência iniciada.');

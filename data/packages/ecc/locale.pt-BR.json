@@ -1,0 +1,1546 @@
+{
+  "locale": "pt-BR",
+  "sourceCommit": "d2ef2680594f9a17526a6e1a2e18b3d242c5d17b",
+  "entries": {
+    "ecc:agent:a11y-architect": {
+      "name": "Arquiteto de acessibilidade",
+      "description": "Planeja interfaces acessíveis, navegação por teclado e semântica."
+    },
+    "ecc:agent:agent-evaluator": {
+      "name": "Avaliador de agentes",
+      "description": "Avalia o comportamento e os resultados de agentes com critérios verificáveis."
+    },
+    "ecc:agent:architect": {
+      "name": "Arquiteto de sistemas",
+      "description": "Analisa arquitetura, dependências e impactos antes da implementação."
+    },
+    "ecc:agent:bengali-reviewer": {
+      "name": "Revisor de bengali",
+      "description": "Revisa recursos e processamento de linguagem bengali."
+    },
+    "ecc:agent:build-error-resolver": {
+      "name": "Corretor de compilação",
+      "description": "Investiga falhas de compilação e propõe correções pontuais."
+    },
+    "ecc:agent:chief-of-staff": {
+      "name": "Coordenador de operações",
+      "description": "Organiza prioridades, decisões e encaminhamentos da equipe."
+    },
+    "ecc:agent:code-architect": {
+      "name": "Arquiteto de código",
+      "description": "Define responsabilidades e fronteiras entre partes do código."
+    },
+    "ecc:agent:code-explorer": {
+      "name": "Explorador de código",
+      "description": "Localiza arquivos, símbolos e fluxos relevantes à tarefa."
+    },
+    "ecc:agent:code-reviewer": {
+      "name": "Revisor de código",
+      "description": "Identifica erros, regressões e lacunas de testes nas alterações."
+    },
+    "ecc:agent:code-simplifier": {
+      "name": "Simplificador de código",
+      "description": "Propõe simplificações que preservem o comportamento existente."
+    },
+    "ecc:agent:comment-analyzer": {
+      "name": "Analista de comentários",
+      "description": "Confere se comentários explicam corretamente o código."
+    },
+    "ecc:agent:commit-reviewer": {
+      "name": "Revisor de alterações",
+      "description": "Revisa o escopo e a qualidade das alterações registradas."
+    },
+    "ecc:agent:conversation-analyzer": {
+      "name": "Analista de conversas",
+      "description": "Analisa decisões e informações relevantes em conversas."
+    },
+    "ecc:agent:cpp-build-resolver": {
+      "name": "Corretor de compilação C++",
+      "description": "Diagnostica erros de compilação e integração em C++."
+    },
+    "ecc:agent:cpp-reviewer": {
+      "name": "Revisor C++",
+      "description": "Revisa segurança de memória, comportamento e qualidade em C++."
+    },
+    "ecc:agent:csharp-reviewer": {
+      "name": "Revisor C#",
+      "description": "Revisa código C#, arquitetura e testes pertinentes."
+    },
+    "ecc:agent:dart-build-resolver": {
+      "name": "Corretor Dart e Flutter",
+      "description": "Investiga erros de análise, compilação e integração Dart/Flutter."
+    },
+    "ecc:agent:database-reviewer": {
+      "name": "Especialista em banco de dados",
+      "description": "Revisa SQL, RLS, migrações, índices e ordem de bloqueios."
+    },
+    "ecc:agent:django-build-resolver": {
+      "name": "Corretor Django",
+      "description": "Diagnostica falhas de configuração e execução de projetos Django."
+    },
+    "ecc:agent:django-reviewer": {
+      "name": "Revisor Django",
+      "description": "Revisa aplicações Django, contratos e acesso a dados."
+    },
+    "ecc:agent:doc-updater": {
+      "name": "Documentador",
+      "description": "Atualiza documentação técnica e referências com base no código real."
+    },
+    "ecc:agent:docs-lookup": {
+      "name": "Pesquisador de documentação",
+      "description": "Confere APIs, versões e comportamentos em documentação confiável."
+    },
+    "ecc:agent:e2e-runner": {
+      "name": "Testador de ponta a ponta",
+      "description": "Verifica fluxos completos e registra evidências dos testes."
+    },
+    "ecc:agent:fastapi-reviewer": {
+      "name": "Revisor FastAPI",
+      "description": "Revisa endpoints, validação e contratos em FastAPI."
+    },
+    "ecc:agent:flutter-reviewer": {
+      "name": "Revisor Flutter",
+      "description": "Revisa widgets, estado, navegação, desempenho e acessibilidade."
+    },
+    "ecc:agent:fsharp-reviewer": {
+      "name": "Revisor F#",
+      "description": "Revisa modelagem, funções e testes em F#."
+    },
+    "ecc:agent:gan-evaluator": {
+      "name": "Avaliador de modelos generativos",
+      "description": "Avalia resultados e critérios de qualidade de modelos generativos."
+    },
+    "ecc:agent:gan-generator": {
+      "name": "Gerador de propostas",
+      "description": "Produz propostas para avaliação e refinamento pelo fluxo generativo."
+    },
+    "ecc:agent:gan-planner": {
+      "name": "Planejador de geração",
+      "description": "Planeja o processo de geração, avaliação e melhoria de propostas."
+    },
+    "ecc:agent:go-build-resolver": {
+      "name": "Corretor de compilação Go",
+      "description": "Investiga erros de compilação e dependências em Go."
+    },
+    "ecc:agent:go-reviewer": {
+      "name": "Revisor Go",
+      "description": "Revisa código Go, concorrência e tratamento de erros."
+    },
+    "ecc:agent:harmonyos-app-resolver": {
+      "name": "Especialista HarmonyOS",
+      "description": "Diagnostica problemas de aplicativos HarmonyOS."
+    },
+    "ecc:agent:harness-optimizer": {
+      "name": "Otimizador de execução de agentes",
+      "description": "Analisa configuração, contexto e ferramentas do ambiente de agentes."
+    },
+    "ecc:agent:healthcare-reviewer": {
+      "name": "Revisor de sistemas de saúde",
+      "description": "Revisa requisitos e riscos de software aplicado à saúde."
+    },
+    "ecc:agent:homelab-architect": {
+      "name": "Arquiteto de laboratório local",
+      "description": "Planeja a organização de serviços e infraestrutura de laboratório."
+    },
+    "ecc:agent:java-build-resolver": {
+      "name": "Corretor de compilação Java",
+      "description": "Investiga erros de compilação e configuração em Java."
+    },
+    "ecc:agent:java-reviewer": {
+      "name": "Revisor Java",
+      "description": "Revisa arquitetura, comportamento e testes em Java."
+    },
+    "ecc:agent:kotlin-build-resolver": {
+      "name": "Corretor de compilação Kotlin",
+      "description": "Diagnostica falhas de compilação e integração em Kotlin."
+    },
+    "ecc:agent:kotlin-reviewer": {
+      "name": "Revisor Kotlin",
+      "description": "Revisa código Kotlin, estado e concorrência."
+    },
+    "ecc:agent:loop-operator": {
+      "name": "Operador de ciclos",
+      "description": "Acompanha ciclos limitados de execução, verificação e correção."
+    },
+    "ecc:agent:marketing-agent": {
+      "name": "Especialista em marketing",
+      "description": "Organiza comunicação e conteúdo de marketing a partir de informações reais."
+    },
+    "ecc:agent:mle-reviewer": {
+      "name": "Revisor de aprendizado de máquina",
+      "description": "Revisa pipelines, experimentos e qualidade de sistemas de aprendizado de máquina."
+    },
+    "ecc:agent:network-architect": {
+      "name": "Arquiteto de redes",
+      "description": "Planeja topologia, conectividade e fronteiras de rede."
+    },
+    "ecc:agent:network-config-reviewer": {
+      "name": "Revisor de configuração de rede",
+      "description": "Revisa configurações e riscos de alterações na rede."
+    },
+    "ecc:agent:network-troubleshooter": {
+      "name": "Analista de problemas de rede",
+      "description": "Investiga conectividade e causas de falhas de rede."
+    },
+    "ecc:agent:opensource-forker": {
+      "name": "Especialista em derivações de código aberto",
+      "description": "Organiza a preparação de derivações de projetos de código aberto."
+    },
+    "ecc:agent:opensource-packager": {
+      "name": "Empacotador de código aberto",
+      "description": "Prepara estrutura, documentação e distribuição de projetos de código aberto."
+    },
+    "ecc:agent:opensource-sanitizer": {
+      "name": "Revisor de publicação de código aberto",
+      "description": "Procura dados sensíveis e itens inadequados antes de uma publicação autorizada."
+    },
+    "ecc:agent:performance-optimizer": {
+      "name": "Especialista em desempenho",
+      "description": "Investiga gargalos e propõe melhorias com base em evidências."
+    },
+    "ecc:agent:php-reviewer": {
+      "name": "Revisor PHP",
+      "description": "Revisa comportamento, segurança e manutenção de código PHP."
+    },
+    "ecc:agent:planner": {
+      "name": "Planejador técnico",
+      "description": "Define etapas, dependências e critérios de conclusão sem trabalho redundante."
+    },
+    "ecc:agent:pr-test-analyzer": {
+      "name": "Analista de cobertura de alterações",
+      "description": "Confere se os testes cobrem o comportamento alterado."
+    },
+    "ecc:agent:python-reviewer": {
+      "name": "Revisor Python",
+      "description": "Revisa código Python, tratamento de erros e testes."
+    },
+    "ecc:agent:pytorch-build-resolver": {
+      "name": "Corretor PyTorch",
+      "description": "Investiga falhas de ambiente e execução de projetos PyTorch."
+    },
+    "ecc:agent:rag-pipeline-reviewer": {
+      "name": "Revisor de busca e geração",
+      "description": "Revisa pipelines de recuperação de informações e geração de respostas."
+    },
+    "ecc:agent:react-build-resolver": {
+      "name": "Corretor React",
+      "description": "Diagnostica falhas de compilação e integração em React."
+    },
+    "ecc:agent:react-reviewer": {
+      "name": "Revisor React",
+      "description": "Revisa componentes, estado, acessibilidade e desempenho em React."
+    },
+    "ecc:agent:refactor-cleaner": {
+      "name": "Especialista em limpeza de código",
+      "description": "Identifica código desnecessário e refatorações de escopo controlado."
+    },
+    "ecc:agent:ruby-reviewer": {
+      "name": "Revisor Ruby",
+      "description": "Revisa código Ruby e suas verificações de comportamento."
+    },
+    "ecc:agent:rust-build-resolver": {
+      "name": "Corretor de compilação Rust",
+      "description": "Investiga erros de compilação e dependências em Rust."
+    },
+    "ecc:agent:rust-reviewer": {
+      "name": "Revisor Rust",
+      "description": "Revisa propriedade, concorrência e tratamento de erros em Rust."
+    },
+    "ecc:agent:security-reviewer": {
+      "name": "Auditor de segurança",
+      "description": "Revisa credenciais, autenticação, permissões e exposição de dados."
+    },
+    "ecc:agent:seo-specialist": {
+      "name": "Especialista em busca orgânica",
+      "description": "Revisa conteúdo e aspectos técnicos de indexação e descoberta."
+    },
+    "ecc:agent:silent-failure-hunter": {
+      "name": "Investigador de falhas silenciosas",
+      "description": "Localiza erros ocultos por tratamentos incompletos ou mensagens enganosas."
+    },
+    "ecc:agent:spec-miner": {
+      "name": "Analista de requisitos existentes",
+      "description": "Extrai contratos e requisitos do código e de suas evidências."
+    },
+    "ecc:agent:swift-build-resolver": {
+      "name": "Corretor de compilação Swift",
+      "description": "Investiga falhas de compilação e integração em Swift."
+    },
+    "ecc:agent:swift-reviewer": {
+      "name": "Revisor Swift",
+      "description": "Revisa código Swift, estado e concorrência."
+    },
+    "ecc:agent:tdd-guide": {
+      "name": "Testador de comportamento",
+      "description": "Orienta testes de regressão e critérios verificáveis de conclusão."
+    },
+    "ecc:agent:type-design-analyzer": {
+      "name": "Analista de tipos",
+      "description": "Revisa como os tipos representam estados, contratos e restrições."
+    },
+    "ecc:agent:typescript-reviewer": {
+      "name": "Revisor TypeScript",
+      "description": "Revisa tipos, contratos, tratamento de erros e manutenção."
+    },
+    "ecc:agent:vue-reviewer": {
+      "name": "Revisor Vue",
+      "description": "Revisa componentes, reatividade, acessibilidade e testes em Vue."
+    },
+    "ecc:skill:accessibility": {
+      "name": "Acessibilidade",
+      "description": "Confere foco, teclado, semântica e legibilidade das interfaces."
+    },
+    "ecc:skill:agent-architecture-audit": {
+      "name": "Auditoria de arquitetura de agentes",
+      "description": "Orienta o trabalho com auditoria de arquitetura de agentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:agent-eval": {
+      "name": "Avaliação de agentes",
+      "description": "Orienta o trabalho com avaliação de agentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:agent-harness-construction": {
+      "name": "Construção do ambiente de agentes",
+      "description": "Orienta o trabalho com construção do ambiente de agentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:agent-introspection-debugging": {
+      "name": "Diagnóstico interno de agentes",
+      "description": "Orienta o trabalho com diagnóstico interno de agentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:agent-payment-x402": {
+      "name": "Pagamentos de agentes com x402",
+      "description": "Orienta o trabalho com pagamentos de agentes com x402, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:agent-runtime-gateway-smoke-test": {
+      "name": "Verificação inicial do gateway de agentes",
+      "description": "Orienta o trabalho com verificação inicial do gateway de agentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:agent-security-hardening": {
+      "name": "Fortalecimento da segurança de agentes",
+      "description": "Orienta o trabalho com fortalecimento da segurança de agentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:agent-self-evaluation": {
+      "name": "Autoavaliação de agentes",
+      "description": "Orienta o trabalho com autoavaliação de agentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:agent-sort": {
+      "name": "Organização de agentes",
+      "description": "Orienta o trabalho com organização de agentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:agentic-engineering": {
+      "name": "Engenharia com agentes",
+      "description": "Orienta o trabalho com engenharia com agentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:agentic-os": {
+      "name": "Ambiente operacional de agentes",
+      "description": "Orienta o trabalho com ambiente operacional de agentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:ai-first-engineering": {
+      "name": "Engenharia orientada por IA",
+      "description": "Orienta o trabalho com engenharia orientada por IA, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:ai-regression-testing": {
+      "name": "Testes de regressão de IA",
+      "description": "Orienta testes de comportamento e regressão em de regressão de IA."
+    },
+    "ecc:skill:android-clean-architecture": {
+      "name": "Arquitetura organizada para Android",
+      "description": "Orienta o trabalho com arquitetura organizada para Android, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:angular-developer": {
+      "name": "Desenvolvimento Angular",
+      "description": "Orienta o trabalho com desenvolvimento Angular, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:api-connector-builder": {
+      "name": "Construção de conectores de API",
+      "description": "Orienta o trabalho com construção de conectores de API, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:api-design": {
+      "name": "Contratos de API",
+      "description": "Define contratos de API, validação, respostas e tratamento de erros."
+    },
+    "ecc:skill:architecture-decision-records": {
+      "name": "Registro de decisões de arquitetura",
+      "description": "Orienta o trabalho com registro de decisões de arquitetura, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:article-writing": {
+      "name": "Redação de artigos",
+      "description": "Orienta o trabalho com redação de artigos, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:automation-audit-ops": {
+      "name": "Auditoria de automações",
+      "description": "Orienta o trabalho com auditoria de automações, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:autonomous-agent-harness": {
+      "name": "Ambiente de agentes autônomos",
+      "description": "Orienta o trabalho com ambiente de agentes autônomos, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:autonomous-loops": {
+      "name": "Ciclos autônomos de trabalho",
+      "description": "Orienta o trabalho com ciclos autônomos de trabalho, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:backend-patterns": {
+      "name": "Padrões de backend",
+      "description": "Orienta implementação, organização e revisão de código com de backend."
+    },
+    "ecc:skill:benchmark-methodology": {
+      "name": "Metodologia de comparação de desempenho",
+      "description": "Orienta o trabalho com metodologia de comparação de desempenho, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:benchmark-optimization-loop": {
+      "name": "Ciclo de otimização de desempenho",
+      "description": "Orienta o trabalho com ciclo de otimização de desempenho, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:benchmark": {
+      "name": "Comparação de desempenho",
+      "description": "Orienta o trabalho com comparação de desempenho, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:bengali-nlp": {
+      "name": "Processamento de linguagem bengali",
+      "description": "Orienta o trabalho com processamento de linguagem bengali, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:blender-motion-state-inspection": {
+      "name": "Inspeção de movimento no Blender",
+      "description": "Orienta o trabalho com inspeção de movimento no Blender, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:blueprint": {
+      "name": "Projeto técnico inicial",
+      "description": "Orienta o trabalho com projeto técnico inicial, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:brand-discovery": {
+      "name": "Descoberta de identidade da marca",
+      "description": "Orienta o trabalho com descoberta de identidade da marca, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:brand-voice": {
+      "name": "Tom de voz da marca",
+      "description": "Orienta o trabalho com tom de voz da marca, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:brownfield-retrospective": {
+      "name": "Retrospectiva de projetos existentes",
+      "description": "Orienta o trabalho com retrospectiva de projetos existentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:browser-qa": {
+      "name": "Verificação no navegador",
+      "description": "Orienta o trabalho com verificação no navegador, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:bun-runtime": {
+      "name": "Execução com Bun",
+      "description": "Orienta o trabalho com execução com Bun, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:canary-watch": {
+      "name": "Acompanhamento de versões experimentais",
+      "description": "Orienta o trabalho com acompanhamento de versões experimentais, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:carrier-relationship-management": {
+      "name": "Relacionamento com transportadoras",
+      "description": "Orienta o trabalho com relacionamento com transportadoras, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:change-impact": {
+      "name": "Análise de impacto de mudanças",
+      "description": "Localiza dependências e efeitos de uma mudança antes da edição."
+    },
+    "ecc:skill:cisco-ios-patterns": {
+      "name": "Padrões de configuração Cisco IOS",
+      "description": "Orienta implementação, organização e revisão de código com de configuração Cisco IOS."
+    },
+    "ecc:skill:ck": {
+      "name": "Ferramentas CK",
+      "description": "Orienta o trabalho com ferramentas CK, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:claude-devfleet": {
+      "name": "Coordenação com Claude Devfleet",
+      "description": "Orienta o trabalho com coordenação com Claude Devfleet, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:click-path-audit": {
+      "name": "Auditoria de navegação e cliques",
+      "description": "Orienta o trabalho com auditoria de navegação e cliques, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:clickhouse-io": {
+      "name": "Padrões de acesso ao ClickHouse",
+      "description": "Orienta o trabalho com padrões de acesso ao ClickHouse, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:code-tour": {
+      "name": "Guia de leitura do código",
+      "description": "Orienta o trabalho com guia de leitura do código, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:codebase-onboarding": {
+      "name": "Introdução ao projeto para a equipe",
+      "description": "Orienta o trabalho com introdução ao projeto para a equipe, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:codehealth-mcp": {
+      "name": "Qualidade de código com MCP",
+      "description": "Orienta o trabalho com qualidade de código com MCP, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:coding-standards": {
+      "name": "Convenções de código",
+      "description": "Orienta o trabalho com convenções de código, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:competitive-platform-analysis": {
+      "name": "Análise de plataformas concorrentes",
+      "description": "Orienta o trabalho com análise de plataformas concorrentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:competitive-report-structure": {
+      "name": "Estrutura de relatório comparativo",
+      "description": "Orienta o trabalho com estrutura de relatório comparativo, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:compose-multiplatform-patterns": {
+      "name": "Padrões Compose Multiplatform",
+      "description": "Orienta implementação, organização e revisão de código com Compose Multiplatform."
+    },
+    "ecc:skill:config-gc": {
+      "name": "Limpeza de configurações",
+      "description": "Orienta o trabalho com limpeza de configurações, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:configure-ecc": {
+      "name": "Configuração do ECC",
+      "description": "Orienta o trabalho com configuração do ECC, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:connections-optimizer": {
+      "name": "Otimização de conexões",
+      "description": "Orienta o trabalho com otimização de conexões, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:content-engine": {
+      "name": "Organização de produção de conteúdo",
+      "description": "Orienta o trabalho com organização de produção de conteúdo, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:content-hash-cache-pattern": {
+      "name": "Cache com verificação de conteúdo",
+      "description": "Orienta o trabalho com cache com verificação de conteúdo, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:context-and-decisions": {
+      "name": "Contexto e decisões do projeto",
+      "description": "Orienta o trabalho com contexto e decisões do projeto, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:context-budget": {
+      "name": "Orçamento de contexto",
+      "description": "Seleciona o contexto necessário e evita repetição de informações."
+    },
+    "ecc:skill:continuous-agent-loop": {
+      "name": "Ciclo contínuo de agentes",
+      "description": "Orienta o trabalho com ciclo contínuo de agentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:continuous-learning-v2": {
+      "name": "Aprendizado contínuo avançado",
+      "description": "Orienta o trabalho com aprendizado contínuo avançado, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:continuous-learning": {
+      "name": "Aprendizado contínuo",
+      "description": "Orienta o trabalho com aprendizado contínuo, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:contract-first": {
+      "name": "Desenvolvimento a partir de contratos",
+      "description": "Orienta o trabalho com desenvolvimento a partir de contratos, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:conventional-commit-review": {
+      "name": "Revisão de mensagens de alteração",
+      "description": "Orienta o trabalho com revisão de mensagens de alteração, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:cost-aware-llm-pipeline": {
+      "name": "Pipeline de IA com controle de consumo",
+      "description": "Orienta o trabalho com pipeline de IA com controle de consumo, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:cost-tracking": {
+      "name": "Acompanhamento de custos",
+      "description": "Orienta o trabalho com acompanhamento de custos, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:council-multi-model": {
+      "name": "Revisão colaborativa entre modelos",
+      "description": "Orienta o trabalho com revisão colaborativa entre modelos, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:council": {
+      "name": "Conselho de revisão",
+      "description": "Orienta o trabalho com conselho de revisão, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:counterparty-channel-discipline": {
+      "name": "Organização de canais entre participantes",
+      "description": "Orienta o trabalho com organização de canais entre participantes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:cpp-coding-standards": {
+      "name": "Convenções de código C++",
+      "description": "Orienta o trabalho com convenções de código C++, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:cpp-testing": {
+      "name": "Testes C++",
+      "description": "Orienta testes de comportamento e regressão em C++."
+    },
+    "ecc:skill:crosspost": {
+      "name": "Adaptação de publicações entre canais",
+      "description": "Orienta o trabalho com adaptação de publicações entre canais, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:csharp-testing": {
+      "name": "Testes C#",
+      "description": "Orienta testes de comportamento e regressão em C#."
+    },
+    "ecc:skill:customer-billing-ops": {
+      "name": "Operações de cobrança de clientes",
+      "description": "Orienta o trabalho com operações de cobrança de clientes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:customs-trade-compliance": {
+      "name": "Conformidade aduaneira e comercial",
+      "description": "Orienta o trabalho com conformidade aduaneira e comercial, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:dart-flutter-patterns": {
+      "name": "Padrões Dart e Flutter",
+      "description": "Orienta widgets, estado, navegação e organização de código Dart/Flutter."
+    },
+    "ecc:skill:dashboard-builder": {
+      "name": "Construção de painéis",
+      "description": "Orienta o trabalho com construção de painéis, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:data-scraper-agent": {
+      "name": "Coleta estruturada de dados",
+      "description": "Orienta o trabalho com coleta estruturada de dados, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:data-throughput-accelerator": {
+      "name": "Otimização do processamento de dados",
+      "description": "Orienta o trabalho com otimização do processamento de dados, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:database-migrations": {
+      "name": "Migrações de banco de dados",
+      "description": "Organiza evoluções versionadas do banco e validações antes da implantação."
+    },
+    "ecc:skill:deep-research": {
+      "name": "Pesquisa aprofundada",
+      "description": "Orienta o trabalho com pesquisa aprofundada, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:deepseek-harness-setup": {
+      "name": "Configuração de ambiente DeepSeek",
+      "description": "Orienta o trabalho com configuração de ambiente DeepSeek, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:defi-amm-security": {
+      "name": "Segurança de formadores de mercado DeFi",
+      "description": "Confere autenticação, permissões e dados sensíveis em de formadores de mercado DeFi."
+    },
+    "ecc:skill:delivery-gate": {
+      "name": "Critérios de liberação da entrega",
+      "description": "Orienta o trabalho com critérios de liberação da entrega, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:deployment-patterns": {
+      "name": "Padrões de implantação",
+      "description": "Orienta implementação, organização e revisão de código com de implantação."
+    },
+    "ecc:skill:design-system": {
+      "name": "Sistema de design",
+      "description": "Orienta o trabalho com sistema de design, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:dev-team": {
+      "name": "Organização da equipe de desenvolvimento",
+      "description": "Orienta o trabalho com organização da equipe de desenvolvimento, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:django-celery": {
+      "name": "Tarefas Django com Celery",
+      "description": "Orienta o trabalho com tarefas Django com Celery, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:django-patterns": {
+      "name": "Padrões Django",
+      "description": "Orienta implementação, organização e revisão de código com Django."
+    },
+    "ecc:skill:django-security": {
+      "name": "Segurança Django",
+      "description": "Confere autenticação, permissões e dados sensíveis em Django."
+    },
+    "ecc:skill:django-tdd": {
+      "name": "Desenvolvimento Django orientado por testes",
+      "description": "Orienta o trabalho com desenvolvimento Django orientado por testes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:django-verification": {
+      "name": "Verificação de projetos Django",
+      "description": "Orienta o trabalho com verificação de projetos Django, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:dmux-workflows": {
+      "name": "Fluxos de trabalho com dmux",
+      "description": "Orienta o trabalho com fluxos de trabalho com dmux, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:docker-patterns": {
+      "name": "Padrões Docker",
+      "description": "Orienta implementação, organização e revisão de código com Docker."
+    },
+    "ecc:skill:docs-governance": {
+      "name": "Organização da documentação",
+      "description": "Orienta o trabalho com organização da documentação, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:documentation-lookup": {
+      "name": "Consulta de documentação",
+      "description": "Verifica APIs e versões em fontes oficiais, sem presumir recursos."
+    },
+    "ecc:skill:dotnet-patterns": {
+      "name": "Padrões .NET",
+      "description": "Orienta implementação, organização e revisão de código com .NET."
+    },
+    "ecc:skill:dynamic-workflow-mode": {
+      "name": "Adaptação do fluxo de trabalho",
+      "description": "Orienta o trabalho com adaptação do fluxo de trabalho, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:e2e-testing": {
+      "name": "Testes de ponta a ponta",
+      "description": "Orienta testes de comportamento e regressão em de ponta a ponta."
+    },
+    "ecc:skill:ecc-guide": {
+      "name": "Guia do ECC",
+      "description": "Orienta o trabalho com guia do ECC, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:ecc-recipes": {
+      "name": "Receitas de uso do ECC",
+      "description": "Orienta o trabalho com receitas de uso do ECC, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:ecc-tools-cost-audit": {
+      "name": "Auditoria de consumo das ferramentas ECC",
+      "description": "Orienta o trabalho com auditoria de consumo das ferramentas ECC, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:email-ops": {
+      "name": "Operações de e-mail",
+      "description": "Orienta o trabalho com operações de e-mail, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:energy-procurement": {
+      "name": "Contratação de energia",
+      "description": "Orienta o trabalho com contratação de energia, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:enterprise-agent-ops": {
+      "name": "Operação de agentes em empresas",
+      "description": "Orienta o trabalho com operação de agentes em empresas, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:error-handling": {
+      "name": "Tratamento de erros",
+      "description": "Orienta o trabalho com tratamento de erros, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:esign-field-placement": {
+      "name": "Posicionamento de campos de assinatura",
+      "description": "Orienta o trabalho com posicionamento de campos de assinatura, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:eval-harness": {
+      "name": "Ambiente de avaliação",
+      "description": "Orienta o trabalho com ambiente de avaliação, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:evm-token-decimals": {
+      "name": "Casas decimais de tokens EVM",
+      "description": "Orienta o trabalho com casas decimais de tokens EVM, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:exa-search": {
+      "name": "Pesquisa com Exa",
+      "description": "Orienta o trabalho com pesquisa com Exa, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:fal-ai-media": {
+      "name": "Produção de mídia com fal.ai",
+      "description": "Orienta o trabalho com produção de mídia com fal.ai, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:fastapi-patterns": {
+      "name": "Padrões FastAPI",
+      "description": "Orienta implementação, organização e revisão de código com FastAPI."
+    },
+    "ecc:skill:finance-billing-ops": {
+      "name": "Operações financeiras e cobrança",
+      "description": "Orienta o trabalho com operações financeiras e cobrança, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:flox-environments": {
+      "name": "Ambientes com Flox",
+      "description": "Orienta o trabalho com ambientes com Flox, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:flutter-dart-code-review": {
+      "name": "Revisão Flutter e Dart",
+      "description": "Revisa alterações Flutter/Dart procurando erros, regressões e problemas de acessibilidade."
+    },
+    "ecc:skill:foundation-models-on-device": {
+      "name": "Modelos de IA no dispositivo",
+      "description": "Orienta o trabalho com modelos de IA no dispositivo, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:frontend-a11y": {
+      "name": "Acessibilidade de interfaces",
+      "description": "Orienta o trabalho com acessibilidade de interfaces, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:frontend-design-direction": {
+      "name": "Direção visual de interfaces",
+      "description": "Orienta o trabalho com direção visual de interfaces, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:frontend-patterns": {
+      "name": "Padrões de frontend",
+      "description": "Orienta implementação, organização e revisão de código com de frontend."
+    },
+    "ecc:skill:frontend-slides": {
+      "name": "Apresentações em interfaces web",
+      "description": "Orienta o trabalho com apresentações em interfaces web, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:fsharp-testing": {
+      "name": "Testes F#",
+      "description": "Orienta testes de comportamento e regressão em F#."
+    },
+    "ecc:skill:gan-style-harness": {
+      "name": "Ambiente de geração e avaliação",
+      "description": "Orienta o trabalho com ambiente de geração e avaliação, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:gateguard": {
+      "name": "Controle de critérios de entrega",
+      "description": "Orienta o trabalho com controle de critérios de entrega, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:generating-python-installer": {
+      "name": "Geração de instaladores Python",
+      "description": "Orienta o trabalho com geração de instaladores Python, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:git-workflow": {
+      "name": "Fluxo de trabalho Git",
+      "description": "Orienta o trabalho com fluxo de trabalho Git, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:github-ops": {
+      "name": "Operações no GitHub",
+      "description": "Orienta o trabalho com operações no GitHub, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:golang-patterns": {
+      "name": "Padrões Go",
+      "description": "Orienta implementação, organização e revisão de código com Go."
+    },
+    "ecc:skill:golang-testing": {
+      "name": "Testes Go",
+      "description": "Orienta testes de comportamento e regressão em Go."
+    },
+    "ecc:skill:google-workspace-ops": {
+      "name": "Operações no Google Workspace",
+      "description": "Orienta o trabalho com operações no Google Workspace, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:growth-log": {
+      "name": "Registro de evolução",
+      "description": "Orienta o trabalho com registro de evolução, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:healthcare-cdss-patterns": {
+      "name": "Apoio à decisão clínica",
+      "description": "Orienta implementação, organização e revisão de código com Apoio à decisão clínica."
+    },
+    "ecc:skill:healthcare-emr-patterns": {
+      "name": "Padrões de prontuários eletrônicos",
+      "description": "Orienta implementação, organização e revisão de código com de prontuários eletrônicos."
+    },
+    "ecc:skill:healthcare-eval-harness": {
+      "name": "Avaliação de sistemas de saúde",
+      "description": "Orienta o trabalho com avaliação de sistemas de saúde, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:healthcare-phi-compliance": {
+      "name": "Proteção de dados de saúde",
+      "description": "Orienta o trabalho com proteção de dados de saúde, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:hermes-imports": {
+      "name": "Importação para Hermes",
+      "description": "Orienta o trabalho com importação para Hermes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:hexagonal-architecture": {
+      "name": "Arquitetura hexagonal",
+      "description": "Orienta o trabalho com arquitetura hexagonal, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:hipaa-compliance": {
+      "name": "Conformidade HIPAA",
+      "description": "Orienta o trabalho com conformidade HIPAA, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:homelab-network-readiness": {
+      "name": "Verificação de rede do laboratório",
+      "description": "Orienta o trabalho com verificação de rede do laboratório, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:homelab-network-setup": {
+      "name": "Configuração de rede do laboratório",
+      "description": "Orienta o trabalho com configuração de rede do laboratório, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:homelab-pihole-dns": {
+      "name": "DNS do laboratório com Pi-hole",
+      "description": "Orienta o trabalho com dNS do laboratório com Pi-hole, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:homelab-vlan-segmentation": {
+      "name": "Segmentação de rede com VLAN",
+      "description": "Orienta o trabalho com segmentação de rede com VLAN, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:homelab-wireguard-vpn": {
+      "name": "VPN do laboratório com WireGuard",
+      "description": "Orienta o trabalho com vPN do laboratório com WireGuard, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:hookify-rules": {
+      "name": "Regras de automação com hooks",
+      "description": "Orienta o trabalho com regras de automação com hooks, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:i18n-sync": {
+      "name": "Sincronização de traduções",
+      "description": "Orienta o trabalho com sincronização de traduções, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:inherit-legacy-style": {
+      "name": "Preservação do estilo existente",
+      "description": "Orienta o trabalho com preservação do estilo existente, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:intent-driven-development": {
+      "name": "Desenvolvimento orientado por objetivos",
+      "description": "Orienta o trabalho com desenvolvimento orientado por objetivos, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:inventory-demand-planning": {
+      "name": "Planejamento de estoque e demanda",
+      "description": "Orienta o trabalho com planejamento de estoque e demanda, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:investor-materials": {
+      "name": "Materiais para investidores",
+      "description": "Orienta o trabalho com materiais para investidores, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:investor-outreach": {
+      "name": "Comunicação com investidores",
+      "description": "Orienta o trabalho com comunicação com investidores, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:ios-icon-gen": {
+      "name": "Geração de ícones iOS",
+      "description": "Orienta o trabalho com geração de ícones iOS, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:issue-review": {
+      "name": "Revisão de problemas registrados",
+      "description": "Orienta o trabalho com revisão de problemas registrados, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:iterative-retrieval": {
+      "name": "Busca iterativa de informações",
+      "description": "Orienta o trabalho com busca iterativa de informações, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:ito-baskets": {
+      "name": "Cestas de operações ITO",
+      "description": "Orienta o trabalho com cestas de operações ITO, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:ito-compute": {
+      "name": "Processamento com ITO",
+      "description": "Orienta o trabalho com processamento com ITO, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:ito-inference": {
+      "name": "Inferência com ITO",
+      "description": "Orienta o trabalho com inferência com ITO, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:ito-training": {
+      "name": "Treinamento com ITO",
+      "description": "Orienta o trabalho com treinamento com ITO, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:java-coding-standards": {
+      "name": "Convenções de código Java",
+      "description": "Orienta o trabalho com convenções de código Java, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:jira-integration": {
+      "name": "Integração com Jira",
+      "description": "Orienta o trabalho com integração com Jira, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:jpa-patterns": {
+      "name": "Padrões JPA",
+      "description": "Orienta implementação, organização e revisão de código com JPA."
+    },
+    "ecc:skill:knowledge-ops": {
+      "name": "Organização do conhecimento",
+      "description": "Orienta o trabalho com organização do conhecimento, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:kotlin-coroutines-flows": {
+      "name": "Corrotinas e fluxos Kotlin",
+      "description": "Orienta o trabalho com corrotinas e fluxos Kotlin, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:kotlin-exposed-patterns": {
+      "name": "Padrões Kotlin Exposed",
+      "description": "Orienta implementação, organização e revisão de código com Kotlin Exposed."
+    },
+    "ecc:skill:kotlin-ktor-patterns": {
+      "name": "Padrões Kotlin Ktor",
+      "description": "Orienta implementação, organização e revisão de código com Kotlin Ktor."
+    },
+    "ecc:skill:kotlin-patterns": {
+      "name": "Padrões Kotlin",
+      "description": "Orienta implementação, organização e revisão de código com Kotlin."
+    },
+    "ecc:skill:kotlin-testing": {
+      "name": "Testes Kotlin",
+      "description": "Orienta testes de comportamento e regressão em Kotlin."
+    },
+    "ecc:skill:kubernetes-patterns": {
+      "name": "Padrões Kubernetes",
+      "description": "Orienta implementação, organização e revisão de código com Kubernetes."
+    },
+    "ecc:skill:laravel-patterns": {
+      "name": "Padrões Laravel",
+      "description": "Orienta implementação, organização e revisão de código com Laravel."
+    },
+    "ecc:skill:laravel-plugin-discovery": {
+      "name": "Descoberta de plugins Laravel",
+      "description": "Orienta o trabalho com descoberta de plugins Laravel, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:laravel-security": {
+      "name": "Segurança Laravel",
+      "description": "Confere autenticação, permissões e dados sensíveis em Laravel."
+    },
+    "ecc:skill:laravel-tdd": {
+      "name": "Desenvolvimento Laravel orientado por testes",
+      "description": "Orienta o trabalho com desenvolvimento Laravel orientado por testes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:laravel-verification": {
+      "name": "Verificação de projetos Laravel",
+      "description": "Orienta o trabalho com verificação de projetos Laravel, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:latency-critical-systems": {
+      "name": "Sistemas sensíveis à latência",
+      "description": "Orienta o trabalho com sistemas sensíveis à latência, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:lead-intelligence": {
+      "name": "Análise de potenciais clientes",
+      "description": "Orienta o trabalho com análise de potenciais clientes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:liquid-glass-design": {
+      "name": "Design com vidro translúcido",
+      "description": "Orienta o trabalho com design com vidro translúcido, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:living-docs-governance": {
+      "name": "Manutenção de documentação viva",
+      "description": "Orienta o trabalho com manutenção de documentação viva, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:llm-trading-agent-security": {
+      "name": "Segurança de agentes de negociação",
+      "description": "Confere autenticação, permissões e dados sensíveis em de agentes de negociação."
+    },
+    "ecc:skill:logistics-exception-management": {
+      "name": "Tratamento de ocorrências logísticas",
+      "description": "Orienta o trabalho com tratamento de ocorrências logísticas, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:loop-design-check": {
+      "name": "Revisão de ciclos de execução",
+      "description": "Orienta o trabalho com revisão de ciclos de execução, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:mailtrap-email-integration": {
+      "name": "Integração de e-mail com Mailtrap",
+      "description": "Orienta o trabalho com integração de e-mail com Mailtrap, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:make-interfaces-feel-better": {
+      "name": "Refinamento da experiência de interface",
+      "description": "Orienta o trabalho com refinamento da experiência de interface, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:manim-video": {
+      "name": "Vídeos com Manim",
+      "description": "Orienta o trabalho com vídeos com Manim, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:market-research": {
+      "name": "Pesquisa de mercado",
+      "description": "Orienta o trabalho com pesquisa de mercado, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:marketing-campaign": {
+      "name": "Campanhas de marketing",
+      "description": "Orienta o trabalho com campanhas de marketing, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:master-agreement-generator": {
+      "name": "Preparação de contratos principais",
+      "description": "Orienta o trabalho com preparação de contratos principais, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:mcp-dependency-review": {
+      "name": "Revisão de dependências MCP",
+      "description": "Orienta o trabalho com revisão de dependências MCP, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:mcp-server-patterns": {
+      "name": "Padrões de servidores MCP",
+      "description": "Orienta implementação, organização e revisão de código com de servidores MCP."
+    },
+    "ecc:skill:messages-ops": {
+      "name": "Operações de mensagens",
+      "description": "Orienta o trabalho com operações de mensagens, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:ml-adoption-playbook": {
+      "name": "Adoção de aprendizado de máquina",
+      "description": "Orienta o trabalho com adoção de aprendizado de máquina, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:mle-workflow": {
+      "name": "Fluxo de engenharia de aprendizado de máquina",
+      "description": "Orienta o trabalho com fluxo de engenharia de aprendizado de máquina, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:module-governance": {
+      "name": "Organização de módulos",
+      "description": "Orienta o trabalho com organização de módulos, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:module-regression": {
+      "name": "Regressões entre módulos",
+      "description": "Orienta o trabalho com regressões entre módulos, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:motion-advanced": {
+      "name": "Movimento avançado de interface",
+      "description": "Orienta o trabalho com movimento avançado de interface, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:motion-foundations": {
+      "name": "Fundamentos de movimento",
+      "description": "Orienta o trabalho com fundamentos de movimento, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:motion-patterns": {
+      "name": "Padrões de animação",
+      "description": "Orienta implementação, organização e revisão de código com de animação."
+    },
+    "ecc:skill:mybatis-patterns": {
+      "name": "Padrões MyBatis",
+      "description": "Orienta implementação, organização e revisão de código com MyBatis."
+    },
+    "ecc:skill:mysql-patterns": {
+      "name": "Padrões MySQL",
+      "description": "Orienta implementação, organização e revisão de código com MySQL."
+    },
+    "ecc:skill:nanoclaw-repl": {
+      "name": "Ambiente interativo NanoClaw",
+      "description": "Orienta o trabalho com ambiente interativo NanoClaw, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:nasiko-control-plane": {
+      "name": "Plano de controle Nasiko",
+      "description": "Orienta o trabalho com plano de controle Nasiko, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:nestjs-patterns": {
+      "name": "Padrões NestJS",
+      "description": "Orienta implementação, organização e revisão de código com NestJS."
+    },
+    "ecc:skill:netmiko-ssh-automation": {
+      "name": "Automação SSH com Netmiko",
+      "description": "Orienta o trabalho com automação SSH com Netmiko, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:network-bgp-diagnostics": {
+      "name": "Diagnóstico de redes BGP",
+      "description": "Orienta o trabalho com diagnóstico de redes BGP, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:network-config-validation": {
+      "name": "Validação de configuração de rede",
+      "description": "Orienta o trabalho com validação de configuração de rede, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:network-interface-health": {
+      "name": "Verificação de interfaces de rede",
+      "description": "Orienta o trabalho com verificação de interfaces de rede, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:nextjs-turbopack": {
+      "name": "Next.js com Turbopack",
+      "description": "Orienta o trabalho com next.js com Turbopack, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:nodejs-keccak256": {
+      "name": "Keccak-256 com Node.js",
+      "description": "Orienta o trabalho com keccak-256 com Node.js, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:nutrient-document-processing": {
+      "name": "Processamento de documentos com Nutrient",
+      "description": "Orienta o trabalho com processamento de documentos com Nutrient, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:nuxt4-patterns": {
+      "name": "Padrões Nuxt 4",
+      "description": "Orienta implementação, organização e revisão de código com Nuxt 4."
+    },
+    "ecc:skill:openclaw-persona-forge": {
+      "name": "Criação de perfis OpenClaw",
+      "description": "Orienta o trabalho com criação de perfis OpenClaw, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:opensource-pipeline": {
+      "name": "Fluxo de publicação de código aberto",
+      "description": "Orienta o trabalho com fluxo de publicação de código aberto, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:operator-approval-loop": {
+      "name": "Fluxo de aprovação humana",
+      "description": "Separa ações de baixo risco de operações que exigem decisão humana."
+    },
+    "ecc:skill:orch-add-feature": {
+      "name": "Coordenação de novas funcionalidades",
+      "description": "Orienta o trabalho com coordenação de novas funcionalidades, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:orch-build-mvp": {
+      "name": "Coordenação de produto inicial",
+      "description": "Orienta o trabalho com coordenação de produto inicial, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:orch-change-feature": {
+      "name": "Coordenação de mudanças de funcionalidades",
+      "description": "Orienta o trabalho com coordenação de mudanças de funcionalidades, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:orch-fix-defect": {
+      "name": "Coordenação de correções de defeitos",
+      "description": "Orienta o trabalho com coordenação de correções de defeitos, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:orch-pipeline": {
+      "name": "Pipeline de coordenação",
+      "description": "Orienta o trabalho com pipeline de coordenação, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:orch-refine-code": {
+      "name": "Coordenação de refinamento de código",
+      "description": "Orienta o trabalho com coordenação de refinamento de código, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:osint-investigation": {
+      "name": "Pesquisa em fontes abertas",
+      "description": "Orienta o trabalho com pesquisa em fontes abertas, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:parallel-execution-optimizer": {
+      "name": "Otimização de execução paralela",
+      "description": "Orienta o trabalho com otimização de execução paralela, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:perl-patterns": {
+      "name": "Padrões Perl",
+      "description": "Orienta implementação, organização e revisão de código com Perl."
+    },
+    "ecc:skill:perl-security": {
+      "name": "Segurança Perl",
+      "description": "Confere autenticação, permissões e dados sensíveis em Perl."
+    },
+    "ecc:skill:perl-testing": {
+      "name": "Testes Perl",
+      "description": "Orienta testes de comportamento e regressão em Perl."
+    },
+    "ecc:skill:plan-canvas": {
+      "name": "Quadro de planejamento",
+      "description": "Orienta o trabalho com quadro de planejamento, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:plan-orchestrate": {
+      "name": "Planejamento e coordenação",
+      "description": "Orienta o trabalho com planejamento e coordenação, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:plankton-code-quality": {
+      "name": "Qualidade de código com Plankton",
+      "description": "Orienta o trabalho com qualidade de código com Plankton, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:postgres-patterns": {
+      "name": "Padrões PostgreSQL",
+      "description": "Orienta consultas, índices, RLS e concorrência em PostgreSQL."
+    },
+    "ecc:skill:prediction-market-oracle-research": {
+      "name": "Pesquisa de oráculos de mercados preditivos",
+      "description": "Orienta o trabalho com pesquisa de oráculos de mercados preditivos, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:prediction-market-risk-review": {
+      "name": "Revisão de risco de mercados preditivos",
+      "description": "Orienta o trabalho com revisão de risco de mercados preditivos, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:prisma-patterns": {
+      "name": "Padrões Prisma",
+      "description": "Orienta implementação, organização e revisão de código com Prisma."
+    },
+    "ecc:skill:product-capability": {
+      "name": "Mapeamento de capacidades do produto",
+      "description": "Orienta o trabalho com mapeamento de capacidades do produto, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:product-lens": {
+      "name": "Análise do produto",
+      "description": "Orienta o trabalho com análise do produto, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:production-audit": {
+      "name": "Auditoria de produção",
+      "description": "Orienta o trabalho com auditoria de produção, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:production-scheduling": {
+      "name": "Programação da produção",
+      "description": "Orienta o trabalho com programação da produção, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:project-flow-ops": {
+      "name": "Organização do fluxo do projeto",
+      "description": "Orienta o trabalho com organização do fluxo do projeto, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:prompt-caching-strategy": {
+      "name": "Estratégia de cache de instruções",
+      "description": "Orienta o trabalho com estratégia de cache de instruções, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:prompt-optimizer": {
+      "name": "Otimização de instruções",
+      "description": "Orienta o trabalho com otimização de instruções, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:python-patterns": {
+      "name": "Padrões Python",
+      "description": "Orienta implementação, organização e revisão de código com Python."
+    },
+    "ecc:skill:python-testing": {
+      "name": "Testes Python",
+      "description": "Orienta testes de comportamento e regressão em Python."
+    },
+    "ecc:skill:pytorch-patterns": {
+      "name": "Padrões PyTorch",
+      "description": "Orienta implementação, organização e revisão de código com PyTorch."
+    },
+    "ecc:skill:quality-nonconformance": {
+      "name": "Tratamento de não conformidades",
+      "description": "Orienta o trabalho com tratamento de não conformidades, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:quarkus-patterns": {
+      "name": "Padrões Quarkus",
+      "description": "Orienta implementação, organização e revisão de código com Quarkus."
+    },
+    "ecc:skill:quarkus-security": {
+      "name": "Segurança Quarkus",
+      "description": "Confere autenticação, permissões e dados sensíveis em Quarkus."
+    },
+    "ecc:skill:quarkus-tdd": {
+      "name": "Desenvolvimento Quarkus orientado por testes",
+      "description": "Orienta o trabalho com desenvolvimento Quarkus orientado por testes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:quarkus-verification": {
+      "name": "Verificação de projetos Quarkus",
+      "description": "Orienta o trabalho com verificação de projetos Quarkus, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:rails-patterns": {
+      "name": "Padrões Rails",
+      "description": "Orienta implementação, organização e revisão de código com Rails."
+    },
+    "ecc:skill:ralphinho-rfc-pipeline": {
+      "name": "Fluxo de propostas técnicas Ralphinho",
+      "description": "Orienta o trabalho com fluxo de propostas técnicas Ralphinho, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:react-native-patterns": {
+      "name": "Padrões React Native",
+      "description": "Orienta implementação, organização e revisão de código com React Native."
+    },
+    "ecc:skill:react-patterns": {
+      "name": "Padrões React",
+      "description": "Orienta implementação, organização e revisão de código com React."
+    },
+    "ecc:skill:react-performance": {
+      "name": "Desempenho React",
+      "description": "Orienta o trabalho com desempenho React, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:react-testing": {
+      "name": "Testes React",
+      "description": "Orienta testes de comportamento e regressão em React."
+    },
+    "ecc:skill:recsys-pipeline-architect": {
+      "name": "Arquitetura de sistemas de recomendação",
+      "description": "Orienta o trabalho com arquitetura de sistemas de recomendação, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:recursive-decision-ledger": {
+      "name": "Registro encadeado de decisões",
+      "description": "Orienta o trabalho com registro encadeado de decisões, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:redis-patterns": {
+      "name": "Padrões Redis",
+      "description": "Orienta implementação, organização e revisão de código com Redis."
+    },
+    "ecc:skill:regex-vs-llm-structured-text": {
+      "name": "Escolha entre expressões regulares e IA",
+      "description": "Orienta o trabalho com escolha entre expressões regulares e IA, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:remotion-video-creation": {
+      "name": "Criação de vídeos com Remotion",
+      "description": "Orienta o trabalho com criação de vídeos com Remotion, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:repo-scan": {
+      "name": "Inspeção do repositório",
+      "description": "Orienta o trabalho com inspeção do repositório, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:research-ops": {
+      "name": "Organização de pesquisa",
+      "description": "Orienta o trabalho com organização de pesquisa, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:returns-reverse-logistics": {
+      "name": "Devoluções e logística reversa",
+      "description": "Orienta o trabalho com devoluções e logística reversa, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:rules-distill": {
+      "name": "Síntese de regras",
+      "description": "Orienta o trabalho com síntese de regras, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:rust-patterns": {
+      "name": "Padrões Rust",
+      "description": "Orienta implementação, organização e revisão de código com Rust."
+    },
+    "ecc:skill:rust-testing": {
+      "name": "Testes Rust",
+      "description": "Orienta testes de comportamento e regressão em Rust."
+    },
+    "ecc:skill:safety-guard": {
+      "name": "Proteções de execução",
+      "description": "Orienta o trabalho com proteções de execução, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:santa-method": {
+      "name": "Método Santa",
+      "description": "Orienta o trabalho com método Santa, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:scientific-db-pubmed-database": {
+      "name": "Pesquisa científica no PubMed",
+      "description": "Orienta o trabalho com pesquisa científica no PubMed, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:scientific-db-uspto-database": {
+      "name": "Pesquisa de patentes no USPTO",
+      "description": "Orienta o trabalho com pesquisa de patentes no USPTO, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:scientific-pkg-gget": {
+      "name": "Consultas científicas com gget",
+      "description": "Orienta o trabalho com consultas científicas com gget, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:scientific-thinking-literature-review": {
+      "name": "Revisão de literatura científica",
+      "description": "Orienta o trabalho com revisão de literatura científica, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:scientific-thinking-scholar-evaluation": {
+      "name": "Avaliação de produção científica",
+      "description": "Orienta o trabalho com avaliação de produção científica, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:search-first": {
+      "name": "Pesquisa antes da implementação",
+      "description": "Orienta o trabalho com pesquisa antes da implementação, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:security-bounty-hunter": {
+      "name": "Investigação autorizada de vulnerabilidades",
+      "description": "Orienta o trabalho com investigação autorizada de vulnerabilidades, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:security-review": {
+      "name": "Revisão de segurança",
+      "description": "Confere autenticação, permissões, entradas e exposição de dados sensíveis."
+    },
+    "ecc:skill:security-scan": {
+      "name": "Varredura de segurança",
+      "description": "Orienta o trabalho com varredura de segurança, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:seo": {
+      "name": "Otimização para mecanismos de busca",
+      "description": "Orienta o trabalho com otimização para mecanismos de busca, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:skill-comply": {
+      "name": "Verificação de conformidade de skills",
+      "description": "Orienta o trabalho com verificação de conformidade de skills, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:skill-host-compat": {
+      "name": "Compatibilidade de skills com o ambiente",
+      "description": "Orienta o trabalho com compatibilidade de skills com o ambiente, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:skill-scout": {
+      "name": "Descoberta de skills",
+      "description": "Orienta o trabalho com descoberta de skills, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:skill-stocktake": {
+      "name": "Inventário de skills",
+      "description": "Orienta o trabalho com inventário de skills, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:social-graph-ranker": {
+      "name": "Classificação de conexões sociais",
+      "description": "Orienta o trabalho com classificação de conexões sociais, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:social-publisher": {
+      "name": "Publicação em redes sociais",
+      "description": "Orienta o trabalho com publicação em redes sociais, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:springboot-patterns": {
+      "name": "Padrões Spring Boot",
+      "description": "Orienta implementação, organização e revisão de código com Spring Boot."
+    },
+    "ecc:skill:springboot-security": {
+      "name": "Segurança Spring Boot",
+      "description": "Confere autenticação, permissões e dados sensíveis em Spring Boot."
+    },
+    "ecc:skill:springboot-tdd": {
+      "name": "Desenvolvimento Spring Boot orientado por testes",
+      "description": "Orienta o trabalho com desenvolvimento Spring Boot orientado por testes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:springboot-verification": {
+      "name": "Verificação de projetos Spring Boot",
+      "description": "Orienta o trabalho com verificação de projetos Spring Boot, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:story-lifecycle": {
+      "name": "Ciclo de vida de requisitos",
+      "description": "Orienta o trabalho com ciclo de vida de requisitos, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:strategic-compact": {
+      "name": "Compactação estratégica de contexto",
+      "description": "Orienta o trabalho com compactação estratégica de contexto, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:swift-actor-persistence": {
+      "name": "Persistência com atores Swift",
+      "description": "Orienta o trabalho com persistência com atores Swift, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:swift-concurrency-6-2": {
+      "name": "Concorrência Swift 6.2",
+      "description": "Orienta o trabalho com concorrência Swift 6.2, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:swift-protocol-di-testing": {
+      "name": "Testes e injeção de dependências Swift",
+      "description": "Orienta testes de comportamento e regressão em e injeção de dependências Swift."
+    },
+    "ecc:skill:swiftui-patterns": {
+      "name": "Padrões SwiftUI",
+      "description": "Orienta implementação, organização e revisão de código com SwiftUI."
+    },
+    "ecc:skill:taste-application": {
+      "name": "Aplicação de direção visual",
+      "description": "Orienta o trabalho com aplicação de direção visual, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:taste-distillation": {
+      "name": "Síntese de direção visual",
+      "description": "Orienta o trabalho com síntese de direção visual, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:taste": {
+      "name": "Análise de direção visual",
+      "description": "Orienta o trabalho com análise de direção visual, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:tasteforge-video": {
+      "name": "Produção de vídeo com Tasteforge",
+      "description": "Orienta o trabalho com produção de vídeo com Tasteforge, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:tdd-workflow": {
+      "name": "Fluxo de testes de comportamento",
+      "description": "Transforma critérios de conclusão em testes de comportamento e regressão."
+    },
+    "ecc:skill:team-agent-orchestration": {
+      "name": "Coordenação de equipes de agentes",
+      "description": "Orienta o trabalho com coordenação de equipes de agentes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:team-builder": {
+      "name": "Composição de equipes",
+      "description": "Orienta o trabalho com composição de equipes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:terminal-opener": {
+      "name": "Abertura de terminal",
+      "description": "Orienta o trabalho com abertura de terminal, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:terminal-ops": {
+      "name": "Operações de terminal",
+      "description": "Orienta o trabalho com operações de terminal, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:test-collaboration": {
+      "name": "Colaboração em testes",
+      "description": "Orienta o trabalho com colaboração em testes, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:tinystruct-patterns": {
+      "name": "Padrões Tinystruct",
+      "description": "Orienta implementação, organização e revisão de código com Tinystruct."
+    },
+    "ecc:skill:token-budget-advisor": {
+      "name": "Planejamento de consumo de tokens",
+      "description": "Orienta o trabalho com planejamento de consumo de tokens, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:token-card": {
+      "name": "Resumo de consumo de tokens",
+      "description": "Orienta o trabalho com resumo de consumo de tokens, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:typescript-patterns": {
+      "name": "Padrões TypeScript",
+      "description": "Orienta implementação, organização e revisão de código com TypeScript."
+    },
+    "ecc:skill:ui-demo": {
+      "name": "Demonstração de interface",
+      "description": "Orienta o trabalho com demonstração de interface, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:ui-to-vue": {
+      "name": "Conversão de interface para Vue",
+      "description": "Orienta o trabalho com conversão de interface para Vue, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:uncloud": {
+      "name": "Implantação com Uncloud",
+      "description": "Orienta o trabalho com implantação com Uncloud, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:unified-memory": {
+      "name": "Memória compartilhada",
+      "description": "Orienta o trabalho com memória compartilhada, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:unified-notifications-ops": {
+      "name": "Organização de notificações",
+      "description": "Orienta o trabalho com organização de notificações, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:verification-loop": {
+      "name": "Ciclo de verificação",
+      "description": "Organiza verificações locais e registra resultados e limitações reais."
+    },
+    "ecc:skill:video-editing": {
+      "name": "Edição de vídeo",
+      "description": "Orienta o trabalho com edição de vídeo, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:videodb": {
+      "name": "Biblioteca de vídeo com VideoDB",
+      "description": "Orienta o trabalho com biblioteca de vídeo com VideoDB, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:visa-doc-translate": {
+      "name": "Tradução de documentos de viagem",
+      "description": "Orienta o trabalho com tradução de documentos de viagem, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:vite-patterns": {
+      "name": "Padrões Vite",
+      "description": "Orienta implementação, organização e revisão de código com Vite."
+    },
+    "ecc:skill:vue-patterns": {
+      "name": "Padrões Vue",
+      "description": "Orienta implementação, organização e revisão de código com Vue."
+    },
+    "ecc:skill:windows-desktop-e2e": {
+      "name": "Testes de ponta a ponta no Windows",
+      "description": "Orienta o trabalho com testes de ponta a ponta no Windows, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:workspace-surface-audit": {
+      "name": "Auditoria do workspace",
+      "description": "Orienta o trabalho com auditoria do workspace, com etapas e critérios verificáveis."
+    },
+    "ecc:skill:x-api": {
+      "name": "Integração com a API do X",
+      "description": "Orienta o trabalho com integração com a API do X, com etapas e critérios verificáveis."
+    }
+  }
+}

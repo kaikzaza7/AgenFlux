@@ -1,0 +1,15 @@
+node_modules/
+.next/
+.protocol/
+*.tsbuildinfo
+.env*
+!.env.example
+test-results/
+data/*
+!data/packages/
+data/packages/*
+!data/packages/ecc/
+data/packages/ecc/INSTALACAO.md
+*.sqlite
+*.sqlite-*
+.DS_Store

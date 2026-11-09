@@ -1,0 +1,2 @@
+# Keep ECC source bytes intact: profiles are validated against SHA-256.
+data/packages/ecc/source/** -text
