@@ -1,8 +1,40 @@
-<p align="center"><img src="public/agenflux-logo.png" alt="Logo AgenFlux" width="128"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/kaikzaza7/AgenFlux/main/public/agenflux-logo.png" alt="Logo AgenFlux" width="128"></p>
 
 # AgenFlux
 
 Painel local para montar times de agentes, acompanhar missões do Codex e visualizar a equipe em um escritório animado. Use a aba **Time** para escolher até oito agentes próprios ou da biblioteca ECC.
+
+## Interface
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/kaikzaza7/AgenFlux/main/public/agenflux-logo-mark.png" alt="Símbolo do AgenFlux" width="180">
+</p>
+
+O projeto combina um painel operacional, um escritório visual de agentes e uma biblioteca ECC para organizar o fluxo de trabalho em um único lugar.
+
+### Telas do aplicativo
+
+<p align="center">
+  <img src="docs/images/office-live.png" alt="Escritório do AgenFlux com equipe de agentes" width="900">
+</p>
+
+<p align="center">
+  <img src="docs/images/office-map.png" alt="Mapa visual das estações de trabalho e sala de aprovações" width="900">
+</p>
+
+<p align="center">
+  <img src="docs/images/settings-ecc.png" alt="Biblioteca ECC e configurações de IA" width="900">
+</p>
+
+<p align="center">
+  <img src="docs/images/settings-overview.png" alt="Visão geral das configurações do AgenFlux" width="900">
+</p>
+
+As imagens mostram o escritório visual, as estações dos agentes, a sala de aprovações, o acompanhamento da equipe e a biblioteca ECC integrada.
+
+## Em computadores mais modestos
+
+O AgenFlux é uma boa opção para computadores com recursos limitados: roda localmente, não depende de banco externo e executa as tarefas em sequência. O computador ainda precisa rodar o Node.js, o navegador e os comandos autorizados.
 
 ## Instalação
 
