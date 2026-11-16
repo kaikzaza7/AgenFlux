@@ -1,6 +1,6 @@
 {
   "name": "agenflux",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "node --experimental-strip-types server/index.ts --production",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "test": "node --experimental-strip-types --test --test-force-exit --test-concurrency=1 tests/*.test.ts",
     "doctor": "node --experimental-strip-types scripts/doctor.ts",
     "test:http": "node scripts/http-validation.mjs"
   },
@@ -30,6 +30,6 @@
     "tsx": "^4.20.0"
   },
   "engines": {
-    "node": ">=24.0.0"
+    "node": ">=22.18.0"
   }
 }

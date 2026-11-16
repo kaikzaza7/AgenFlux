@@ -80,7 +80,7 @@ test("OpenCode real: missão executa ferramentas reais, transmite eventos e regi
     assert.ok(events.some(e => /^tool:Ferramenta concluída read/.test(e)), "evento de ferramenta concluída");
     assert.ok(events.some(e => /^model:Modelo: Roteiro 1/.test(e)), "modelo registrado");
     assert.match(analyst.result, /Roteiro concluído \(1 resultado/);
-    assert.ok(ctx.llm.calls.some(call => call.toolResults === 1), "o resultado da ferramenta voltou ao modelo");
+    assert.ok(ctx.llm.calls.some((call: any) => call.toolResults === 1), "o resultado da ferramenta voltou ao modelo");
   } finally { await ctx.close(); }
 });
 
@@ -163,7 +163,7 @@ test("OpenCode real: recuperação de estado quando eventos são perdidos (recon
     const engine = ctx.engine as any; const original = engine.handle; engine.handle = () => {};
     const mission = ctx.hq.createMission({ objective: "Analise o projeto. LEIA:package.json" });
     await until(() => ctx.store.tasks.some(t => t.missionId === mission.id && t.stage === "analyst" && Boolean(t.sessionId)), "sessão criada", 30000);
-    await until(() => ctx.llm.calls.some(c => c.toolResults === 1 && /package\.json/.test(c.text)), "modelo respondeu", 30000);
+    await until(() => ctx.llm.calls.some((c: any) => c.toolResults === 1 && /package\.json/.test(c.text)), "modelo respondeu", 30000);
     await new Promise(r => setTimeout(r, 1500));
     const analyst = () => ctx.store.tasks.find(t => t.missionId === mission.id && t.stage === "analyst")!;
     assert.equal(analyst().status, "running", "sem eventos, a etapa ainda aparece em execução");

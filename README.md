@@ -2,7 +2,7 @@
 
 # AgenFlux
 
-Painel local para montar times de agentes, acompanhar missões do Codex e visualizar a equipe em um escritório animado. Use a aba **Time** para escolher até oito agentes próprios ou da biblioteca ECC.
+Central local de agentes de IA: você escreve uma missão, o **Orquestrador** escolhe agentes, modelos gratuitos e skills, e você acompanha tudo em um escritório RPG em pixel art — cada movimento corresponde a uma execução real.
 
 ## Interface
 
@@ -26,50 +26,74 @@ O projeto combina um painel operacional, um escritório visual de agentes e uma 
   <img src="docs/images/settings-overview.png" alt="Visão geral das configurações do AgenFlux" width="900">
 </p>
 
-As imagens mostram o escritório visual, as estações dos agentes, a sala de aprovações, o acompanhamento da equipe e a biblioteca ECC integrada.
+> As imagens acima são da versão 2. A versão 3 trocou o mapa por um escritório em pixel art; capture novas telas quando quiser atualizar esta seção.
 
-## Em computadores mais modestos
+## O que há na versão 3
 
-O AgenFlux é uma boa opção para computadores com recursos limitados: roda localmente, não depende de banco externo e executa as tarefas em sequência. O computador ainda precisa rodar o Node.js, o navegador e os comandos autorizados.
+- **Orquestrador**: interpreta a missão, mede a complexidade, escolhe agentes, modelo por etapa e até 3 skills por etapa — sem gastar tokens no planejamento e mostrando o motivo de cada escolha. Você pode substituir qualquer decisão.
+- **Modelos gratuitos primeiro**: “Somente modelos gratuitos” vem ligado. Nada pago é usado como alternativa.
+- **Motores**: OpenCode (recomendado; modelos gratuitos com ferramentas), Ollama (local) e Codex (opcional, usa a assinatura ChatGPT).
+- **Oito agentes**: Orquestrador, Analista, Planejador, Desenvolvedor, Revisor, Segurança, Documentador e Testador — e os que você criar.
+- **Escritório RPG 2D**: personagens caminham até a estação, trabalham, vão à sala de aprovações e voltam à área comum conforme o estado real das tarefas.
+- **Skills** no formato `SKILL.md`, com inspeção de segurança antes de instalar skills externas.
+- **Automações**: missões agendadas (uma vez, dias/horário fixos ou a cada intervalo).
+- **Aprovações**: comandos, edições e acesso à rede esperam a sua decisão.
 
-## Instalação
+## Instalação (Windows, PowerShell)
 
-Você precisa do **Node.js 24 ou superior**, com npm. Para executar tarefas reais, instale também o [Codex CLI](https://developers.openai.com/codex/cli/) e entre com sua conta do ChatGPT.
+Você precisa do **Node.js 22.18 ou superior** (desenvolvido e testado no Node 22; o 24 também serve).
 
-Baixe ou clone o repositório, abra um terminal na pasta que contém `package.json` e execute:
-
-```sh
+```powershell
 npm ci
-codex login
+```
+
+```powershell
 npm run dev
 ```
 
-Abra [http://127.0.0.1:3000](http://127.0.0.1:3000) e clique em **Conectar Codex**. Para testar a interface sem uma conta conectada, pule o login e use **Demonstração → Simular aprovação**.
+Abra http://127.0.0.1:3000. Para executar missões com IA, conecte um motor em **Modelos e Provedores** — o passo a passo está em [docs/GUIA-OPENCODE-WINDOWS.md](docs/GUIA-OPENCODE-WINDOWS.md) e também dentro do aplicativo.
+
+> **Atualizando da versão 2:** rode `npm ci` de novo (a pasta `node_modules` deixou de ser versionada). Seu banco em `data/` é preservado; uma cópia `agent-hq.pre-v3.sqlite` é criada antes da migração.
 
 ## Como usar
 
-1. Em **Time**, monte a equipe e escolha **Salvar time e aplicar**. A ordem de seleção define a ordem de execução de uma missão personalizada.
-2. Em **Nova missão**, selecione o time, informe o objetivo e indique o caminho da pasta do seu projeto. Os agentes atuam em sequência e o último consolida a entrega.
-3. Acompanhe o escritório e revise pedidos de aprovação antes de responder. Consulte o resultado em **Histórico**.
-4. Em **Configurações**, consulte modelos e níveis disponíveis na sua conta. A **Biblioteca ECC** também permite pesquisar agentes e adicionar perfis ao catálogo ou diretamente ao escritório.
+1. **Modelos e Provedores** → conecte o OpenCode e teste um modelo gratuito.
+2. **Nova missão** → descreva o que precisa e clique em **Analisar missão**. Revise o plano (agentes, modelos, skills) e **Iniciar missão**.
+3. Acompanhe no **Escritório**; clique em um personagem para ver modelo, skills, etapa, atividades e arquivos.
+4. Decida as **Aprovações** quando aparecerem.
+5. Leia o relatório em **Missões** ou **Histórico**. Se algo falhar (limite de uso, desconexão), use **Retomar missão**.
 
-O servidor escuta apenas no computador local. A execução usa sua sessão local do Codex e os limites da sua conta. O banco SQLite fica em `data/`. Mantenha essa pasta ao atualizar para preservar seu histórico e seus times. A subpasta `data/packages/ecc/` faz parte do código distribuído e contém os perfis da biblioteca.
+Outras abas: **Equipes** (times fixos), **Agentes** (instruções, modelo, alternativo, raciocínio, skills, personagem), **Skills**, **Automações** e **Configurações** (execuções simultâneas, velocidade do escritório, demonstração).
 
-## Bom para computadores fracos
+## Em computadores modestos
 
-O AgenFlux foi preparado para rodar localmente, sem banco de dados externo, sem serviços em nuvem e sem uma infraestrutura pesada. A interface usa uma única aplicação local e o histórico fica em SQLite. Ainda assim, para executar missões reais, o consumo de memória dependerá do Node.js, do Codex CLI e dos processos que você delegar.
+Roda localmente com SQLite, sem serviços de nuvem. O escritório usa Canvas 2D sem bibliotecas de jogo e reduz a taxa de quadros quando nada se move. Comece com 1 ou 2 execuções simultâneas.
+
+## Documentação
+
+- [Guia do OpenCode no Windows](docs/GUIA-OPENCODE-WINDOWS.md)
+- [Modelos gratuitos: o que foi verificado](docs/MODELOS-GRATUITOS.md)
+- [Arquitetura](docs/ARQUITETURA.md)
+- [Origem e licença dos assets](docs/ASSETS.md)
 
 ## Diagnóstico e testes
 
-```sh
-npm run doctor
+```powershell
 npm run typecheck
+```
+
+```powershell
 npm test
+```
+
+```powershell
 npm run build
 ```
 
-Se trocar arquivos do servidor, encerre a instância com **Ctrl+C** e execute `npm run dev` novamente. Se a porta 3000 estiver ocupada, defina a variável de ambiente `PORT` antes de iniciar.
+Os testes de integração com o OpenCode iniciam o binário real quando ele está instalado (ou em `OPENCODE_BIN`) e usam um modelo roteirizado local, sem rede e sem custo; sem o OpenCode, são pulados com aviso. `npm run doctor` continua verificando o Codex.
+
+O servidor escuta apenas no computador local. Se a porta 3000 estiver ocupada, defina `PORT` antes de iniciar.
 
 ## Biblioteca ECC
 
-O material de terceiros vem de [affaan-m/ECC](https://github.com/affaan-m/ECC/tree/d2ef2680594f9a17526a6e1a2e18b3d242c5d17b). O aviso de licença MIT do pacote está em [data/packages/ecc/source/LICENSE](data/packages/ecc/source/LICENSE).
+O material de terceiros vem de [affaan-m/ECC](https://github.com/affaan-m/ECC/tree/d2ef2680594f9a17526a6e1a2e18b3d242c5d17b) (MIT). O índice `catalog.json` é reconstruído automaticamente a partir dos arquivos presentes em `data/packages/ecc/source/`.

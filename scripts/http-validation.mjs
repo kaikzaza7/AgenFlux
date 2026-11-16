@@ -5,7 +5,7 @@ const response = await fetch(base);
 assert.equal(response.status, 200);
 assert.ok((await response.text()).includes('AgenFlux'));
 const state = await (await fetch(`${base}/api/hq/state`)).json();
-assert.equal(state.agents.filter(a => !a.archived).length, 6);
+assert.equal(state.agents.filter(a => !a.archived).length, 8);
 assert.deepEqual(state.models, []);
 const original = JSON.stringify(state);
 const socket = new WebSocket(base.replace('http:', 'ws:') + '/ws', { origin: base });
@@ -21,4 +21,4 @@ const denied = await fetch(`${base}/api/hq/action`, {method:'POST',headers:{'Con
 assert.equal(denied.status,403);
 const refreshed = await (await fetch(`${base}/api/hq/state`)).json();
 assert.deepEqual(refreshed,state);
-console.log('OK: HTTP 200, seis agentes, snapshot WebSocket idêntico, recarga preservada e origem estrangeira recusada. Nenhuma inferência iniciada.');
+console.log('OK: HTTP 200, oito agentes, snapshot WebSocket idêntico, recarga preservada e origem estrangeira recusada. Nenhuma inferência iniciada.');
