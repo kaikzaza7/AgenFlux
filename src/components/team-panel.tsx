@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState } from "react";
 import type { Snapshot, Team } from "@/lib/types";
 
 type EccProfile = { id: string; kind: string; name: string; description: string };
@@ -39,7 +39,8 @@ export function TeamPanel({ snapshot, busy, action }: {
       <div className="command-intro">{snapshot.teams?.length ? snapshot.teams.map(team =>
         <div className="row-between" key={team.id}><div><strong>{team.name}</strong><p>{team.agentIds.length} agentes{snapshot.activeTeamId === team.id ? " · No escritório" : ""}</p></div>
           <div className="approval-actions"><button className="button" onClick={() => edit(team)}>Editar</button>
-          <button className="button" disabled={busy} onClick={() => void action({ action: "team.use", id: team.id })}>Usar no escritório</button></div></div>) :
+          <button className="button" disabled={busy} onClick={() => void action({ action: "team.use", id: team.id })}>Usar no escritório</button>
+          <button className="text-button" disabled={busy} onClick={() => { if (confirm(`Excluir o time “${team.name}”? Os agentes continuam no catálogo.`)) void action({ action: "team.delete", id: team.id }); }}>Excluir</button></div></div>) :
         <p>Nenhum time salvo. Escolha os integrantes abaixo para montar o primeiro.</p>}</div>
     </section>
     <form className="command-panel mission-form" onSubmit={async e => {
@@ -49,7 +50,7 @@ export function TeamPanel({ snapshot, busy, action }: {
       }
     }}>
       <h2>{editing ? "Editar time" : "Montar equipe"}</h2>
-      <p className="field-help">Escolha até 8 agentes próprios ou da Biblioteca ECC. A ordem de seleção define as etapas da missão. Os perfis ECC escolhidos entram no catálogo ao aplicar.</p>
+      <p className="field-help">Escolha até 8 agentes próprios ou da Biblioteca ECC. Em missões delegadas a um time, a ordem de seleção define as etapas e o último integrante consolida a entrega. Os perfis ECC escolhidos entram no catálogo ao aplicar.</p>
       {libraryError && <p className="field-help" role="status">Biblioteca ECC: {libraryError}</p>}
       <label>Nome do time<input value={name} onChange={e => setName(e.target.value)} maxLength={60} placeholder="Ex.: Front-end ou Marketing" /></label>
       <label>Buscar agente<input value={query} onChange={e => setQuery(e.target.value)} placeholder="Nome ou função" /></label>
@@ -69,15 +70,6 @@ export function TeamPanel({ snapshot, busy, action }: {
         <button type="button" className="button" disabled={busy} onClick={() => void action({ action: "office.set", agentIds: ids })}>Aplicar só no escritório</button>
       </div>
     </form>
-    <form className="command-panel mission-form" onSubmit={async (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault(); const form = e.currentTarget; const data = new FormData(form);
-      if (await action({ action: "agent.create", name: data.get("name"), role: data.get("role"), instructions: data.get("instructions"), color: "#8ba7d4" })) form.reset();
-    }}>
-      <h2>Criar agente próprio</h2>
-      <label>Nome<input name="name" required maxLength={32} /></label>
-      <label>Função<input name="role" required maxLength={100} /></label>
-      <label>Instruções<textarea name="instructions" required rows={3} maxLength={8000} /></label>
-      <button className="button" disabled={busy}>Adicionar ao catálogo</button>
-    </form>
+    <p className="field-help">Para criar ou editar agentes (instruções, modelo, skills, personagem), use a aba Agentes. Sem time selecionado, o Orquestrador escolhe os agentes de cada missão automaticamente.</p>
   </div>;
 }

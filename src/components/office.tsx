@@ -1,167 +1,161 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import { APPROVAL_TABLE, BENCH, CAFE, DESKS, PLANTS, WALLS, canPatrol, destination, patrolTarget, setWalkingTarget, walkStep, type Point, type Walker } from "@/lib/office";
-import { latestTask, STATUS_LABEL, type Agent, type Task, type Communication, type Status } from "@/lib/types";
-import { agentInitials } from "@/lib/team";
+import { useEffect, useRef, useState } from "react";
+import { COLS, DESKS, LOUNGE_SPOTS, ROWS, TILE, createWalker, destination, placeFor, setTarget, step, type Walker } from "@/lib/pixel/map";
+import { SPRITE_H, drawBubble, drawEnvelope, drawMonitorGlow, drawSprite, renderStatic, type Bubble } from "@/lib/pixel/sprites";
+import { latestTask, STATUS_LABEL, type Agent, type Communication, type Status, type Task } from "@/lib/types";
 import { uniqueCommunications } from "@/lib/communications";
 
-type OfficeWalker = Walker & { status: Status; atStation: boolean; resumeAt: number };
-type Position = Point & { walking: boolean };
+// ---------------------------------------------------------------------------
+// Escritório RPG em Canvas 2D.
+//
+// Por que Canvas 2D e não Phaser/PixiJS: são no máximo 8 personagens em um mapa
+// de 46×26 tiles. Canvas puro resolve com zero dependências (Phaser pesa ~1 MB),
+// não exige WebGL e roda bem em computadores modestos.
+//
+// Regra de ouro: posição e animação derivam do STATUS REAL da tarefa de cada
+// agente (vindo do backend). O único movimento decorativo é o passeio de agentes
+// ociosos pela área comum — e ele nunca é mostrado como trabalho.
+// ---------------------------------------------------------------------------
 
-export function Office({ agents, tasks, selected, onSelect, communications = [] }: {
-  agents: Agent[]; tasks: Task[]; selected: string; onSelect: (id: string) => void; communications?: Communication[];
+const W = COLS * TILE, H = ROWS * TILE;
+interface Actor { walker: Walker; status: Status; index: number; sprite: number; wanderAt: number; arrivedAt: number; mailUntil: number }
+interface Flight { from: string; to: string; start: number }
+const FRAME_MS = 50; // 20 quadros/s enquanto há movimento
+
+export function Office({ agents, tasks, selected, onSelect, communications = [], speed = 4, dwell = 4 }: {
+  agents: Agent[]; tasks: Task[]; selected: string; onSelect: (id: string) => void; communications?: Communication[]; speed?: number; dwell?: number;
 }) {
-  const occupants = agents.slice(0, DESKS.length);
-  const rosterKey = JSON.stringify(occupants.map(agent => [agent.id, latestTask(tasks, agent.id)?.status ?? "idle"]));
-  const roster = useMemo(() => JSON.parse(rosterKey) as [string, Status][], [rosterKey]);
-  const walkers = useRef(new Map<string, OfficeWalker>());
-  const [positions, setPositions] = useState<Record<string, Position>>({});
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReduced(preference.matches);
-    update();
-    preference.addEventListener("change", update);
-    return () => preference.removeEventListener("change", update);
-  }, []);
+  const canvas = useRef<HTMLCanvasElement>(null);
+  const actors = useRef(new Map<string, Actor>());
+  const flights = useRef<Flight[]>([]);
+  const knownDeliveries = useRef<Set<string> | undefined>(undefined);
+  const live = useRef({ agents, tasks, selected, speed, dwell });
+  const [label, setLabel] = useState<{ id: string; x: number; y: number } | undefined>();
+  const [hover, setHover] = useState("");
+  useEffect(() => { live.current = { agents, tasks, selected, speed, dwell }; });
 
-  const knownDeliveries = useRef(new Set<string>());
-  const initializedDeliveries = useRef(false);
-  const [transfers, setTransfers] = useState<Communication[]>([]);
-  const deliveredKey = JSON.stringify(uniqueCommunications(communications).filter(c => c.state === "delivered").map(c => c.id));
-  const delivered = useMemo(() => JSON.parse(deliveredKey) as string[], [deliveredKey]);
-  const communicationsRef = useRef(communications);
-  useEffect(() => { communicationsRef.current = communications; }, [communications]);
+  // Entregas reais entre agentes: cada nova mensagem "entregue" vira um envelope
+  // voando do remetente ao destinatário. As já existentes ao abrir a tela não animam.
   useEffect(() => {
-    const fresh = delivered.filter(id => !knownDeliveries.current.has(id));
-    knownDeliveries.current = new Set(delivered);
-    const show = initializedDeliveries.current && !reduced && fresh.length;
-    initializedDeliveries.current = true;
-    if (!show) { setTransfers([]); return; }
-    setTransfers(uniqueCommunications(communicationsRef.current).filter(c => fresh.includes(c.id)));
-    const timer = setTimeout(() => setTransfers([]), 2200);
-    return () => clearTimeout(timer);
-  }, [delivered, reduced]);
-
-  useEffect(() => {
-    const active = new Set(roster.map(([id]) => id));
-    const count = roster.length;
-    for (const id of walkers.current.keys()) if (!active.has(id)) walkers.current.delete(id);
-    roster.forEach(([id, status], index) => {
-      const walker = walkers.current.get(id);
-      if (walker?.status === status && !reduced) return;
-      const start = walker?.point ?? destination(index, "idle");
-      const next: OfficeWalker = walker ?? { point: start, anchor: start, path: [], status, atStation: false, resumeAt: 0 };
-      next.status = status;
-      next.atStation = false;
-      next.resumeAt = performance.now() + 900 + index * 520;
-      if (reduced) {
-        next.point = next.anchor = destination(index, status);
-        next.path = [];
-      } else if (status === "running" || status === "approval" || canPatrol(status)) {
-        setWalkingTarget(next, destination(index, status), DESKS.length);
-      } else {
-        next.path = [];
-      }
-      walkers.current.set(id, next);
-    });
-    function publish() {
-      setPositions(Object.fromEntries(Array.from(walkers.current, ([id, walker]) => [
-        id, { ...walker.point, walking: walker.path.length > 0 },
-      ])));
+    const delivered = uniqueCommunications(communications).filter(c => c.state === "delivered");
+    const known = knownDeliveries.current;
+    if (known) for (const message of delivered) if (!known.has(message.id) && message.from !== message.to) {
+      flights.current.push({ from: message.from, to: message.to, start: performance.now() });
+      const sender = actors.current.get(message.from); if (sender) sender.mailUntil = performance.now() + 1800;
     }
-    publish();
-    if (reduced || !count) return;
-    let last = 0;
-    let frame = 0;
-    function tick(now: number) {
-      const elapsed = last ? Math.min((now - last) / 1000, 0.05) : 0;
-      last = now;
-      let changed = false;
-      roster.forEach(([id], index) => {
-        const walker = walkers.current.get(id)!;
-        if (!walker.path.length && canPatrol(walker.status) && now >= walker.resumeAt) {
-          setWalkingTarget(walker, patrolTarget(index, walker.atStation), DESKS.length);
-          walker.atStation = !walker.atStation;
-          walker.resumeAt = now + 1200 + (index % 3) * 350;
+    knownDeliveries.current = new Set(delivered.map(c => c.id));
+  }, [communications]);
+
+  useEffect(() => {
+    const element = canvas.current; if (!element) return;
+    const ctx = element.getContext("2d")!; ctx.imageSmoothingEnabled = false;
+    const background = renderStatic();
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0, last = 0, lastDraw = 0, stopped = false, lastLabel = "";
+
+    function sync(now: number) {
+      const { agents, tasks } = live.current;
+      const roster = agents.slice(0, 8);
+      for (const id of actors.current.keys()) if (!roster.some(agent => agent.id === id)) actors.current.delete(id);
+      roster.forEach((agent, index) => {
+        const status = (latestTask(tasks, agent.id)?.status ?? "idle") as Status;
+        let actor = actors.current.get(agent.id);
+        if (!actor) {
+          // Primeira aparição: já no lugar correspondente ao estado atual, sem "teletransporte" visível depois.
+          actor = { walker: createWalker(destination(index, status)), status, index, sprite: agent.sprite ?? index, wanderAt: now + 1500 + index * 700, arrivedAt: 0, mailUntil: 0 };
+          if (placeFor(status) === "desk") actor.walker.dir = "up";
+          actors.current.set(agent.id, actor); return;
         }
-        if (!walker.path.length) return;
-        walkStep(walker, elapsed * 108);
-        changed = true;
-        if (!walker.path.length) walker.resumeAt = now + 1150 + (index % 3) * 420;
+        actor.sprite = agent.sprite ?? index;
+        if (actor.status === status && actor.index === index) return;
+        actor.status = status; actor.index = index;
+        const target = destination(index, status);
+        if (reduced.matches) { actor.walker = createWalker(target); actor.arrivedAt = now; }
+        else setTarget(actor.walker, target);
+        actor.wanderAt = now + live.current.dwell * 1000;
       });
-      if (changed) publish();
+    }
+
+    function tick(now: number) {
+      if (stopped) return;
       frame = requestAnimationFrame(tick);
+      if (document.hidden) { last = now; return; }
+      const elapsed = last ? Math.min((now - last) / 1000, 0.1) : 0; last = now;
+      sync(now);
+      let moving = flights.current.length > 0;
+      for (const actor of actors.current.values()) {
+        const place = placeFor(actor.status);
+        // Passeio decorativo, apenas para quem está ocioso na área comum.
+        if (!reduced.matches && place === "lounge" && !actor.walker.path.length && now >= actor.wanderAt) {
+          setTarget(actor.walker, LOUNGE_SPOTS[Math.floor(Math.random() * LOUNGE_SPOTS.length)]);
+          actor.wanderAt = now + (live.current.dwell + Math.random() * live.current.dwell) * 1000 + 2500;
+        }
+        const was = actor.walker.path.length > 0;
+        step(actor.walker, elapsed * live.current.speed);
+        if (was && !actor.walker.path.length) { actor.arrivedAt = now; actor.walker.dir = place === "desk" || place === "approval" ? "up" : "down"; }
+        if (actor.walker.path.length) moving = true;
+      }
+      // Sem movimento, 4 quadros/s bastam para os balões e o brilho dos monitores.
+      if (now - lastDraw < (moving ? FRAME_MS : 250)) return;
+      lastDraw = now;
+      const beat = Math.floor(now / 250);
+      ctx.drawImage(background, 0, 0);
+      const list = [...actors.current.entries()].sort((a, b) => a[1].walker.y - b[1].walker.y);
+      for (const [, actor] of list) if (actor.status === "running" && !actor.walker.path.length) { const desk = DESKS[actor.index % 8].desk; drawMonitorGlow(ctx, desk.x, desk.y, beat); }
+      for (const [id, actor] of list) {
+        const { walker } = actor; const walking = walker.path.length > 0;
+        const x = walker.x * TILE, y = walker.y * TILE - (SPRITE_H - TILE) - 2;
+        const working = actor.status === "running" && !walking;
+        if (id === live.current.selected || id === hoverRef.current) { ctx.fillStyle = id === live.current.selected ? "rgba(255,255,255,.9)" : "rgba(255,255,255,.5)"; ctx.fillRect(Math.round(x) + 1, Math.round(walker.y * TILE) + 13, 14, 2); ctx.fillRect(Math.round(x) + 3, Math.round(walker.y * TILE) + 15, 10, 1); }
+        // Caminhada: 4 quadros. Trabalho: balanço discreto. Ocioso: respiração lenta.
+        const frameIndex = walking ? Math.floor(now / 130) % 4 : 0;
+        const bob = walking ? 0 : working ? beat % 2 : Math.floor(now / 900 + actor.index) % 2 === 0 ? 0 : -1;
+        drawSprite(ctx, actor.sprite, walker.dir, frameIndex, x, y + bob);
+        let bubble: Bubble | undefined;
+        if (now < actor.mailUntil) bubble = "mail";
+        else if (actor.status === "failed") bubble = "alert";
+        else if (actor.status === "approval") bubble = "approval";
+        else if (actor.status === "running" && !walking) bubble = "work";
+        else if (actor.status === "waiting" && !walking) bubble = "wait";
+        else if (actor.status === "queued" && !walking) bubble = "queued";
+        else if (actor.status === "completed" && now - actor.arrivedAt < 4000 && !walking) bubble = "done";
+        if (bubble) drawBubble(ctx, bubble, x, y, beat);
+      }
+      flights.current = flights.current.filter(flight => {
+        const from = actors.current.get(flight.from), to = actors.current.get(flight.to); const t = (now - flight.start) / 1400;
+        if (!from || !to || t >= 1) return false;
+        const ease = t * t * (3 - 2 * t);
+        drawEnvelope(ctx, (from.walker.x + (to.walker.x - from.walker.x) * ease) * TILE + 3, (from.walker.y + (to.walker.y - from.walker.y) * ease) * TILE - 10 - Math.sin(t * Math.PI) * 18);
+        return true;
+      });
+      // Etiqueta com o nome (HTML sobreposto, para ficar nítida em qualquer escala).
+      const focus = hoverRef.current || live.current.selected; const actor = actors.current.get(focus);
+      const next = actor ? `${focus}:${Math.round(actor.walker.x * 8)}:${Math.round(actor.walker.y * 8)}` : "";
+      if (next !== lastLabel) { lastLabel = next; setLabel(actor ? { id: focus, x: (actor.walker.x + 0.5) / COLS * 100, y: (actor.walker.y * TILE - 22) / H * 100 } : undefined); }
     }
     frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [roster, reduced]);
+    return () => { stopped = true; cancelAnimationFrame(frame); };
+  }, []);
 
-  return <svg viewBox="0 0 860 443" className="office-svg" role="group" aria-label="Planta do escritório. Selecione um agente para acompanhar sua atividade.">
-    <defs>
-    <pattern id="floor-tiles" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" fill="none" stroke="#8b8b8b" strokeOpacity=".1"/></pattern>
-    <pattern id="floor-boards" width="80" height="22" patternUnits="userSpaceOnUse"><path d="M0 0H80M0 11H80M16 0V11m39 0v11" fill="none" stroke="#aeaeae" strokeOpacity=".13"/></pattern>
-    <linearGradient id="desk-finish" x2="0" y2="1"><stop stopColor="#363636"/><stop offset="1" stopColor="#272727"/></linearGradient>
-    <g id="plant"><circle r="15" fill="#191919" stroke="#5d5d5d"/><g fill="#818181"><ellipse ry="9" rx="3" transform="rotate(35)"/><ellipse ry="9" rx="3" transform="rotate(95)"/><ellipse ry="9" rx="3" transform="rotate(155)"/></g><circle r="2.5" fill="#b8b8b8"/></g>
-    </defs>
-    <rect x="9" y="9" width="842" height="425" rx="12" fill="#0f0f0f" stroke="#3b3b3b" strokeOpacity=".55" strokeWidth="2"/>
-    <rect x="17" y="17" width="826" height="409" rx="8" fill="#181818" fillOpacity=".82"/>
-    <path d="M19 19H568V424H19Z" fill="#222222" fillOpacity=".72"/>
-    <path d="M19 19H568V424H19Z" fill="url(#floor-boards)"/>
-    <path d="M573 19H841V424H573Z" fill="url(#floor-tiles)"/>
-    <rect x="17" y="17" width="826" height="409" rx="8" fill="none" stroke="#6f6f6f" strokeOpacity=".65" strokeWidth="5"/>
-    {WALLS.map(wall => <rect key={`${wall.x}:${wall.y}`} x={wall.x} y={wall.y} width={wall.w} height={wall.h} fill="#aaa" opacity=".65" />)}
-    <path d="M570 145h-51a51 51 0 0 0 51 51M570 416h-51a51 51 0 0 1 51-51M625 145h51a51 51 0 0 1-51 51" stroke="#888888" strokeOpacity=".75" fill="none"/>
-    <path d="M53 17H163m36 0h110m36 0h110m-402 409H163m36 0h110m36 0h110m388-366v92m0 106v90" stroke="#a0a0a0" strokeWidth="3" strokeLinecap="round"/>
-    <text className="area" x="36" y="46">Estações de trabalho A</text><text className="area" x="36" y="250">Estações de trabalho B</text><text className="area" x="648" y="46">Sala de aprovações</text><text className="area" x="596" y="251">Café e área comum</text>
-    <rect x="658" y="77" width="120" height="96" rx="23" fill="#1d1d1d" stroke="#434343" strokeDasharray="4 4"/>
-    <rect x={APPROVAL_TABLE.x} y={APPROVAL_TABLE.y} width={APPROVAL_TABLE.w} height={APPROVAL_TABLE.h} rx="26" fill="url(#desk-finish)" stroke="#797979"/>
-    <rect x="688" y="110" width="32" height="29" rx="4" fill="#191919" stroke="#9e9e9e"/><path d="M696 119h15m-15 6h11m-11 6h13" stroke="#cbcbcb" strokeLinecap="round"/>
-    <rect x={CAFE.x} y={CAFE.y} width={CAFE.w} height={CAFE.h} rx="6" fill="url(#desk-finish)" stroke="#5f5f5f"/>
-    <rect x="657" y="287" width="22" height="24" rx="4" fill="#1a1a1a" stroke="#848484"/><circle cx="668" cy="300" r="4" fill="#aaaaaa"/>
-    <path d="M745 288h32v22h-32z" fill="#212121" stroke="#848484"/><path d="M753 296h16" stroke="#b7b7b7"/>
-    <rect x={BENCH.x} y={BENCH.y} width={BENCH.w} height={BENCH.h} rx="14" fill="#2f2f2f" stroke="#797979"/><path d="M671 374h69" stroke="#989898" strokeOpacity=".5"/>
-    {PLANTS.map(plant => <use key={plant.x} href="#plant" x={plant.x} y={plant.y} />)}
-    {DESKS.map(({ x, y }, index) => {
-      return <g key={index} transform={`translate(${x} ${y})`} data-station={index + 1} aria-hidden="true">
-        <text className="desk-number" x="-51" y="-8">Estação {String(index + 1).padStart(2, "0")}</text>
-        <rect x="-54" width="108" height="55" rx="8" fill="url(#desk-finish)" stroke="#7d7d7d"/>
-        <rect x="-26" y="8" width="52" height="20" rx="4" fill="#131313" stroke="#969696"/>
-        <path d="M-19 15H8m-27 6H0m-5 12H5m-5-5v5" stroke="#aeaeae" strokeLinecap="round"/>
-        <rect x="-19" y="39" width="38" height="7" rx="2" fill="#777"/>
-        <rect x="27" y="38" width="7" height="10" rx="3.5" fill="#aaa"/>
-        <g className="office-chair" transform="translate(0 77)">
-          <rect x="-23" y="-13" width="46" height="28" rx="8" fill="#191919" stroke="#666"/>
-          <rect x="-17" y="-17" width="34" height="33" rx="9" fill="#323232" stroke="#919191"/>
-          <path d="M-17 11q0 9 8 9H9q8 0 8-9" fill="#262626" stroke="#919191"/>
-        </g>
-      </g>;
-    })}
-    {transfers.map(message => {
-      const from = positions[message.from], to = positions[message.to];
-      return from && to ? <line key={message.id} className="real-transfer" x1={from.x} y1={from.y} x2={to.x} y2={to.y} stroke="#fff" strokeOpacity=".65" strokeWidth="2" strokeDasharray="4 8">
-        <title>{message.from} → {message.to}; evento {message.sourceEventId}</title>
-      </line> : null;
-    })}
-    {occupants.map((agent, index) => {
-      const task = latestTask(tasks, agent.id);
-      const status = task?.status ?? "idle";
-      const point = positions[agent.id] ?? { ...destination(index, "idle"), walking: false };
-      return <g key={agent.id} transform={`translate(${point.x} ${point.y})`} role="button" tabIndex={0}
-        data-agent={agent.id} data-status={status} data-walking={point.walking} aria-pressed={selected === agent.id}
-        aria-label={`${agent.name}: ${STATUS_LABEL[status]}`} className="office-agent"
-        onClick={() => onSelect(agent.id)} onKeyDown={e => {
-          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onSelect(agent.id); }
-        }}>
-        <title>{agent.name} · {STATUS_LABEL[status]} · {task?.title ?? "Sem tarefa"}</title>
-        <circle className="agent-ring" r="17" fill="none" stroke="#fff" strokeWidth="1.5"/>
-        <g className="agent-steps" aria-hidden="true"><ellipse cx="-4" cy="12" rx="3" ry="4" fill="#bdbdbd"/><ellipse cx="4" cy="12" rx="3" ry="4" fill="#bdbdbd"/></g>
-        <g className="agent-body">
-          <circle r="12" fill={status === "running" || status === "approval" ? "#eee" : "#555"} stroke="#171717" strokeWidth="1.5"/>
-          <text textAnchor="middle" y="3" fontSize="9" fontWeight="750" fill={status === "running" || status === "approval" ? "#171717" : "#fff"}>{agentInitials(agent)}</text>
-        </g>
-      </g>;
-    })}
-  </svg>;
+  const hoverRef = useRef(""); useEffect(() => { hoverRef.current = hover; }, [hover]);
+  function pick(event: React.MouseEvent<HTMLCanvasElement>) {
+    const box = event.currentTarget.getBoundingClientRect();
+    // object-fit: contain — converte o clique para coordenadas do mapa.
+    const scale = Math.min(box.width / W, box.height / H);
+    const px = (event.clientX - box.left - (box.width - W * scale) / 2) / scale / TILE, py = (event.clientY - box.top - (box.height - H * scale) / 2) / scale / TILE;
+    let best = "", distance = 1.4;
+    for (const [id, actor] of actors.current) { const d = Math.hypot(actor.walker.x + 0.5 - px, actor.walker.y - 0.1 - py); if (d < distance) { distance = d; best = id; } }
+    return best;
+  }
+  const named = label && agents.find(agent => agent.id === label.id);
+  const namedStatus = named ? (latestTask(tasks, named.id)?.status ?? "idle") as Status : "idle";
+  return <div className="office-canvas-wrap">
+    <canvas ref={canvas} width={W} height={H} className="office-canvas" role="img"
+      aria-label={`Escritório em pixel art com ${agents.length} agentes. ${agents.slice(0, 8).map(agent => `${agent.name}: ${STATUS_LABEL[(latestTask(tasks, agent.id)?.status ?? "idle") as Status]}`).join("; ")}.`}
+      style={{ cursor: hover ? "pointer" : "default" }}
+      onMouseMove={event => { const id = pick(event); if (id !== hover) setHover(id); }} onMouseLeave={() => setHover("")}
+      onClick={event => { const id = pick(event); if (id) onSelect(id); }} />
+    {named && label && <span className="office-nametag" style={{ left: `${label.x}%`, top: `${label.y}%` }}>{named.name}<small>{STATUS_LABEL[namedStatus]}</small></span>}
+  </div>;
 }

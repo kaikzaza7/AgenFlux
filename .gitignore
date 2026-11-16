@@ -13,3 +13,4 @@ data/packages/ecc/INSTALACAO.md
 *.sqlite
 *.sqlite-*
 .DS_Store
+data/packages/ecc/catalog.json
