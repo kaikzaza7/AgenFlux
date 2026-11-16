@@ -83,7 +83,27 @@ ollama pull qwen2.5-coder:7b
 
 Depois, **Conectar** no cartão **Ollama**. Neste modo direto o modelo **não usa ferramentas** (serve para análise, planejamento e documentação: o AgenFlux envia um pacote de contexto do projeto). Para um modelo do Ollama editar arquivos, adicione-o como provedor no `opencode.json` do OpenCode.
 
-## 7. Problemas comuns
+## 7. Claude como Orquestrador (opcional — usa a sua assinatura Claude)
+
+```powershell
+npm install -g @anthropic-ai/claude-code
+```
+
+```powershell
+claude
+```
+
+Faça o login uma vez na janela que abrir e feche. No AgenFlux: **Modelos e Provedores → cartão Claude → Conectar → Tornar o Claude o Orquestrador**.
+
+- O Claude passa a abrir cada missão (inclusive as das **Automações**) com um briefing para a equipe e a redigir o relatório final.
+- Dentro do AgenFlux ele trabalha **somente em leitura** (ferramentas Read, Glob e Grep). Edições continuam com os agentes do OpenCode, que pedem aprovação.
+- **Não é gratuito**: consome os limites do seu plano. Por isso o botão liga “Permitir assinatura já contratada”. Os outros agentes continuam nos modelos gratuitos.
+- Se o limite da assinatura acabar no meio de uma missão, a etapa é refeita com um modelo gratuito.
+- A variável `ANTHROPIC_API_KEY` é ignorada de propósito, para nunca gerar cobrança de API.
+
+Verificado com o Claude Code 2.1.325 (uma chamada real mínima). No Windows, se o AgenFlux não achar o executável, defina `CLAUDE_BIN` com o caminho de `claude.exe`.
+
+## 8. Problemas comuns
 
 | Sintoma | Causa provável | O que fazer |
 |---|---|---|

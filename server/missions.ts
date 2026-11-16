@@ -185,12 +185,15 @@ export class MissionCoordinator {
   // dependências (compactados), não uma previsão feita no planejamento.
   dependencyContext(task: Task): string {
     const dependencies = (task.dependencies ?? []).map(id => this.host.store.one<Task>("task", id)).filter((t): t is Task => Boolean(t));
+    // O briefing do Orquestrador acompanha todas as etapas seguintes da missão.
+    const briefingId = this.get(task.missionId)?.stageTasks?.briefing;
+    if (briefingId && briefingId !== task.id && !dependencies.some(t => t.id === briefingId)) { const briefing = this.host.store.one<Task>("task", briefingId); if (briefing?.status === "completed") dependencies.unshift(briefing); }
     if (!dependencies.length) return "";
     const budget = Math.max(1200, Math.floor(18000 / dependencies.length));
     return JSON.stringify(dependencies.map(t => {
       const s = readSummary(t.result);
       // O Revisor recebe a entrega do Desenvolvedor por inteiro; os demais, um resumo.
-      const full = (task.agentId === "reviewer" && t.agentId === "developer") || task.stage === "report";
+      const full = (task.agentId === "reviewer" && t.agentId === "developer") || task.stage === "report" || t.stage === "briefing";
       const data = full ? { summary: s.summary.slice(0, 12000), files: s.files, findings: s.findings, needsChanges: s.needsChanges, blockers: s.blockers }
         : { summary: s.summary.slice(0, Math.floor(budget / 2)), files: s.files.slice(0, 12).map(f => f.slice(0, 160)), findings: s.findings.slice(0, 8).map(f => f.slice(0, Math.floor(budget / 10))), needsChanges: s.needsChanges, blockers: s.blockers.slice(0, 3).map(b => b.slice(0, 300)) };
       return redactValue({ de: this.host.agentName(t.agentId), etapa: t.stage, ferramentaLocal: t.engine === "local" || undefined, dados: data });

@@ -32,7 +32,8 @@ O projeto combina um painel operacional, um escritório visual de agentes e uma 
 
 - **Orquestrador**: interpreta a missão, mede a complexidade, escolhe agentes, modelo por etapa e até 3 skills por etapa — sem gastar tokens no planejamento e mostrando o motivo de cada escolha. Você pode substituir qualquer decisão.
 - **Modelos gratuitos primeiro**: “Somente modelos gratuitos” vem ligado. Nada pago é usado como alternativa.
-- **Motores**: OpenCode (recomendado; modelos gratuitos com ferramentas), Ollama (local) e Codex (opcional, usa a assinatura ChatGPT).
+- **Motores**: OpenCode (recomendado; modelos gratuitos com ferramentas), Ollama (local), Claude (opcional, via Claude Code; usa a assinatura Claude, somente leitura) e Codex (opcional, usa a assinatura ChatGPT).
+- **Claude como Orquestrador** (opcional): um clique em Modelos e Provedores. Ele abre cada missão — inclusive as agendadas — com um briefing para a equipe e redige o relatório final; os demais agentes seguem em modelos gratuitos.
 - **Oito agentes**: Orquestrador, Analista, Planejador, Desenvolvedor, Revisor, Segurança, Documentador e Testador — e os que você criar.
 - **Escritório RPG 2D**: personagens caminham até a estação, trabalham, vão à sala de aprovações e voltam à área comum conforme o estado real das tarefas.
 - **Skills** no formato `SKILL.md`, com inspeção de segurança antes de instalar skills externas.

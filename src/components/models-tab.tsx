@@ -33,7 +33,11 @@ function EngineCard({ engine, busy, action }: { engine: NonNullable<TabProps["sn
     {on && <p className="field-help">{engine.version ? `Versão ${engine.version} · ` : ""}{engine.models ?? 0} modelo(s) · {engine.freeModels ?? 0} sem custo{engine.managed ? " · servidor iniciado pelo AgenFlux (127.0.0.1, senha aleatória)" : ""}</p>}
     <div className="hq-actions">
       {!on ? <button className="hq-button primary" disabled={busy || engine.status === "connecting"} onClick={() => void action({ action: "engine.connect", engine: engine.id })}><Plug size={14} />Conectar</button>
-        : <><button className="hq-button" disabled={busy} onClick={() => void action({ action: "engine.connect", engine: engine.id })}><RefreshCw size={14} />Reconectar</button><button className="hq-button" disabled={busy} onClick={() => void action({ action: "engine.disconnect", engine: engine.id })}>Desconectar</button></>}
+        : <>{engine.id === "claude" && <button className="hq-button primary" disabled={busy} onClick={async () => {
+            if (!confirm("Tornar o Claude o Orquestrador?\n\nEle abrirá cada missão com um briefing para a equipe e redigirá o relatório final (inclusive nas automações). Isso usa os limites da sua assinatura Claude — não é gratuito — e liga a opção “Permitir assinatura já contratada”. Os demais agentes continuam nos modelos gratuitos.")) return;
+            if (await action({ action: "settings.save", allowSubscription: true })) await action({ action: "agent.settings", id: "orchestrator", modelKey: "claude:anthropic/sonnet", fallbackKey: "", maxAttempts: 2, skills: ["*"] });
+          }}>Tornar o Claude o Orquestrador</button>}
+          <button className="hq-button" disabled={busy} onClick={() => void action({ action: "engine.connect", engine: engine.id })}><RefreshCw size={14} />Reconectar</button><button className="hq-button" disabled={busy} onClick={() => void action({ action: "engine.disconnect", engine: engine.id })}>Desconectar</button></>}
     </div>
   </article>;
 }
@@ -74,6 +78,7 @@ export function ModelsTab({ snapshot, catalog, busy, action, request }: TabProps
       <div className="panel-toolbar"><div className="panel-title"><Plug size={17} /><h2>Motores de execução</h2></div><button className="hq-button" onClick={() => setWizard(w => !w)}>{wizard ? "Fechar o guia" : "Guia: configurar o OpenCode no Windows"}</button></div>
       <div className="engine-grid">{engines.map(engine => <EngineCard key={engine.id} engine={engine} busy={busy} action={action} />)}</div>
       {wizard && <ol className="wizard">{STEPS.map(step => <li key={step.title}><h3>{step.title}</h3><p>{step.body}</p>{step.code && <pre className="code-block"><code>{step.code}</code></pre>}</li>)}
+        <li><h3>Claude como Orquestrador (opcional, usa a sua assinatura)</h3><p>Instale o Claude Code, faça login uma vez e clique em “Conectar” no cartão Claude; depois em “Tornar o Claude o Orquestrador”. Dentro do AgenFlux o Claude trabalha somente em leitura: abre a missão com um briefing para a equipe e escreve o relatório final. Edições de arquivos continuam com os agentes do OpenCode, que pedem a sua aprovação.</p><pre className="code-block"><code>{"npm install -g @anthropic-ai/claude-code\nclaude"}</code></pre></li>
         <li><h3>Ollama (opcional, 100% local)</h3><p>Instale o Ollama, baixe um modelo e clique em “Conectar” no cartão Ollama. Neste modo direto o modelo não usa ferramentas (serve para análise, plano e documentação). Para ele editar arquivos, adicione o Ollama como provedor no arquivo de configuração do OpenCode.</p><pre className="code-block"><code>{"winget install Ollama.Ollama\nollama pull qwen2.5-coder:7b\nollama list"}</code></pre></li></ol>}
     </section>
 

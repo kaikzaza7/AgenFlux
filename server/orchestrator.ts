@@ -97,8 +97,13 @@ export function analyzeMission(input: PlanInput): MissionPlan {
   if (on("security")) add({ key: "audit", agentId: "security", goal: "Varredura local por chaves privadas, credenciais com prefixo conhecido e segredos em literais.", dependsOn: [], engine: "local", write: false, criteria: ["Somente arquivo, linha e categoria; nenhum valor de segredo"], reason: "Expressões regulares locais encontram segredos sem enviar o código a ninguém." });
 
   // --- Etapas com modelo de IA ---
-  if (on("analyst")) add({ key: "analyst", agentId: "analyst", goal: "Investigar o projeto para esta missão: arquivos relevantes, pontos de atenção e impactos, partindo do inventário local.", dependsOn: ["scan"], engine: "llm", write: false, criteria: ["Descobertas com caminhos de arquivo", "Lacunas e limitações declaradas"], reason: wanted.get("analyst")! });
-  const afterAnalysis = on("analyst") ? ["analyst"] : ["scan"];
+  // Orquestrador com modelo próprio (ex.: Claude): ele abre a missão com um briefing
+  // real para a equipe e, no fim, redige o relatório. Sem modelo próprio, o
+  // planejamento continua 100% local e sem tokens.
+  const lead = Boolean(settingsOf("orchestrator")?.modelKey || input.overrides?.models?.orchestrator);
+  if (lead) add({ key: "briefing", agentId: "orchestrator", goal: "Abrir a missão como Orquestrador: a partir do inventário local, definir prioridades, riscos e a orientação específica para cada especialista escalado. Não execute o trabalho deles; direcione-o.", dependsOn: ["scan"], engine: "llm", write: false, weight: "light", criteria: ["Orientação objetiva por agente", "Riscos e pontos de atenção"], reason: "O Orquestrador tem um modelo próprio configurado e conduz a equipe." });
+  if (on("analyst")) add({ key: "analyst", agentId: "analyst", goal: "Investigar o projeto para esta missão: arquivos relevantes, pontos de atenção e impactos, partindo do inventário local.", dependsOn: lead ? ["briefing"] : ["scan"], engine: "llm", write: false, criteria: ["Descobertas com caminhos de arquivo", "Lacunas e limitações declaradas"], reason: wanted.get("analyst")! });
+  const afterAnalysis = on("analyst") ? ["analyst"] : lead ? ["briefing"] : ["scan"];
   if (on("planner")) add({ key: "planner", agentId: "planner", goal: "Transformar as descobertas em etapas ordenadas, com critérios verificáveis para cada especialista.", dependsOn: afterAnalysis, engine: "llm", write: false, criteria: ["Plano mínimo, sem trabalho redundante"], reason: wanted.get("planner")! });
   const afterPlan = on("planner") ? ["planner"] : afterAnalysis;
   if (on("developer")) add({ key: "developer", agentId: "developer", goal: canWrite ? "Implementar as alterações da missão, seguindo o plano e preservando o comportamento existente." : "Propor as alterações necessárias em detalhe (a missão é somente leitura: não edite arquivos).", dependsOn: afterPlan, engine: "llm", write: canWrite, criteria: ["Arquivos modificados informados", "Mudanças limitadas ao escopo da missão"], reason: wanted.get("developer")! });
@@ -118,7 +123,7 @@ export function analyzeMission(input: PlanInput): MissionPlan {
   const terminal = stages.filter(s => !stages.some(other => other.dependsOn.includes(s.key))).map(s => s.key);
   // Relatório final: no perfil Econômico é montado localmente; nos demais, o
   // Orquestrador usa um modelo leve para redigir a síntese.
-  const localReport = input.profile === "economic";
+  const localReport = input.profile === "economic" && !lead;
   add({ key: "report", agentId: "orchestrator", goal: "Consolidar as entregas em um relatório final em português: o que foi feito, arquivos, verificações, problemas e limitações.", dependsOn: terminal, engine: localReport ? "local" : "llm", write: false, weight: "light", criteria: ["Relatório fiel às entregas reais"], reason: localReport ? "Perfil Econômico: juntar resultados estruturados é uma operação local, sem tokens." : wanted.get("orchestrator")! });
 
   const llm = stages.filter(s => s.engine === "llm");

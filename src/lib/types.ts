@@ -1,6 +1,6 @@
 export type Mode = "real" | "demo";
 export type Status = "idle" | "queued" | "waiting" | "cancelled" | "running" | "approval" | "completed" | "failed" | "interrupted";
-export type EngineId = "codex" | "opencode" | "ollama" | "local";
+export type EngineId = "codex" | "opencode" | "ollama" | "claude" | "local";
 // Classificação de custo exibida na aba "Modelos e Provedores".
 // "subscription" = incluído em uma assinatura já paga (ex.: ChatGPT via Codex): não é gratuito.
 export type CostClass = "free" | "free-limited" | "free-temporary" | "local" | "paid" | "subscription" | "unavailable";
@@ -54,7 +54,7 @@ export interface AgentSettings { id: string; modelKey?: string; fallbackKey?: st
 export interface CatalogModel {
   key: string; engine: EngineId; providerId: string; providerName: string; modelId: string; name: string;
   cost: CostClass; costNote?: string; toolCall: boolean; reasoning: boolean; efforts: string[];
-  context?: number; connected: boolean; status?: string; tier: ModelTier; chat: boolean; blocked?: string;
+  context?: number; connected: boolean; status?: string; tier: ModelTier; chat: boolean; blocked?: string; readTools?: boolean;
 }
 export interface ProviderInfo { id: string; engine: EngineId; name: string; connected: boolean; env: string[]; authMethods: { type: string; label: string }[]; models: number; freeModels: number; note?: string }
 export interface Catalog { version: number; providers: ProviderInfo[]; models: CatalogModel[] }

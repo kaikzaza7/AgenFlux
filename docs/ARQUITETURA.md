@@ -10,7 +10,7 @@ Navegador (Next.js/React)                    Backend (Node, server/)
                                           │  ├ Skills (skills.ts)              │
                                           │  ├ Automações (automations.ts)     │
                                           │  └ Motores (engines/)              │
-                                          │     opencode · ollama · codex · local
+                                          │     opencode · ollama · claude · codex · local
                                           └──────────────┬─────────────────────┘
                                                 SQLite (data/agent-hq.sqlite)
 ```
@@ -22,7 +22,7 @@ Navegador (Next.js/React)                    Backend (Node, server/)
 | Frontend | `src/components/*`, `src/lib/pixel/*` | escritório, abas, painel |
 | Backend | `server/index.ts`, `server/hq.ts` | HTTP/WebSocket local, estado, agendador |
 | Orquestrador | `server/orchestrator.ts`, `server/missions.ts` | plano, grafo de etapas, entregas, correções |
-| Adaptadores | `server/engines/*` | OpenCode, Ollama, Codex, ferramentas locais |
+| Adaptadores | `server/engines/*` | OpenCode, Ollama, Claude (Claude Code CLI, somente leitura), Codex, ferramentas locais |
 | Skills | `server/skills.ts`, `skills/` | descoberta, seleção, inspeção |
 | Eventos | `EngineHost` em `server/engines/types.ts` | todo evento do escritório nasce de um motor |
 | Persistência | `server/store.ts` | registros JSON em SQLite |
@@ -31,6 +31,7 @@ Navegador (Next.js/React)                    Backend (Node, server/)
 
 1. **Você escreve.** A interface chama `mission.plan`.
 2. **O Orquestrador analisa sem LLM** (`analyzeMission`): intenção por palavras-chave, complexidade, agentes, skills (até 3 por etapa) e modelo por etapa (`routeModel`). Cada escolha vem com o motivo. Você pode trocar agentes, modelos e skills.
+   Se o Orquestrador tiver um modelo próprio (ex.: Claude), o plano ganha a etapa **briefing** — a orientação dele acompanha todas as etapas seguintes — e ele redige o relatório final.
 3. **As etapas viram tarefas** com dependências. Etapas locais (inventário, varredura de segredos, relatório no perfil Econômico) não chamam IA.
 4. **O agendador** inicia o que estiver liberado, respeitando: limite de execuções simultâneas, um agente por estação e **nunca duas etapas com escrita no mesmo workspace**.
 5. **O motor executa** e devolve eventos reais: sessão criada, ferramenta usada, permissão pedida, conclusão.
